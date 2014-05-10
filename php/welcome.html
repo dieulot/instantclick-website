@@ -1,0 +1,70 @@
+<p class="intro"><span>InstantClick</span> is a JavaScript library that dramatically speeds up your website, making navigation effectively instant in most cases.
+
+<h3>Why</h3>
+
+<p>Despite huge bandwidth increases, websites don’t get much faster. This is because the biggest botteneck in loading web pages is latency.<sup id="note-latency-back"><a href="#note-latency">1</a></sup>
+
+<h3>How does it work</h3>
+
+<p>Latency is inevitable with today’s internet architecture so InstantClick cheats by preloading links you are likely to click on.
+
+<p>Before visitors click on a link, they hover over that link. Between these two events, 200 ms to 300 ms usually pass by (<a href="click-test.html">test yourself here</a>). InstantClick makes use of that time to preload the page, so that the page is already there when you click.
+
+<p>On mobile devices, preloading starts on “touchstart”, letting 300 ms (Android) to 450 ms (iOS) for preloading the page.<sup id="note-3g-back"><a href="#note-3g">2</a></sup>
+
+<p>If you want your website to not be flooded by requests, you can set a delay before preloading starts when users hover a link. It will still <a href="http://www.nngroup.com/articles/response-times-3-important-limits/" title="Jakob Nielsen – Response Times: The 3 Important Limits">feel instant</a>.
+
+<p>If you don’t want any wasted request, you may preload on “mousedown”. This is when you press your mouse button (a click is when you release it).
+
+<p>When loading pages with InstantClick, the browser doesn’t show its standard loading indicators anymore. To make sure the user knows a page has changed, InstantClick includes a (customizable) progress bar.<sup id="note-progress-bar-back"><a href="#note-progress-bar">3</a></sup> The bar automatically scales to appropriate size on mobile devices, so it works even when your site isn’t optimized for mobiles.
+
+<hr>
+
+<p>InstantClick uses pushState and Ajax (a combo known as <a href="https://github.com/defunkt/jquery-pjax">pjax</a>), replacing only the body and the title in the head.
+
+<p>Ajax brings two nice benefits in and of itself:
+<ul>
+  <li>Your browser doesn’t have to throw and recompile scripts and styles on each page change anymore.
+  <li>You don’t get a white flash while your browser is waiting for a page to display, making your website <em>feel</em> faster.
+</ul>
+
+<p>InstantClick supports the following browsers’ versions:
+
+<table class="support">
+  <tr>
+    <th>IE
+    <th>Firefox
+    <th>Chrome
+    <th>Safari
+    <th>Opera
+
+    <th>iOS Safari
+    <th>Android Browser
+    <th>Android Chrome
+  <tr>
+    <td>10+
+    <td>4.0+
+    <td>5+
+    <td>5.0+
+    <td>11.5+
+
+    <td>5.0+
+    <td>4.4+
+    <td>18+
+</table>
+
+<p>According to <a href="http://gs.statcounter.com/">StatCounter</a>, 70% of the world support InstantClick. When a browser don’t support it, InstantClick fully degrades.
+
+<h3>Getting started</h3>
+
+<p>Head to the <a href="download.html">Download</a> page and follow the instructions.
+
+<p>You can follow InstantClick’s news on <a href="https://twitter.com/instantclickjs">Twitter</a>, or participate in InstantClick’s development on <a href="https://github.com/dieulot/instantclick">Github</a>.
+
+<h3>Footnotes</h3>
+
+<ol id="footnotes">
+  <li id="note-latency">Check out <a href="http://www.igvita.com/2012/07/19/latency-the-new-web-performance-bottleneck/">Latency: The New Web Performance Bottleneck</a> for a good summary about bandwidth vs. latency effects on web pages. <a href="#note-latency-back" class="noteBack">↩</a>
+  <li id="note-3g">On 3G, requests <a href="https://twitter.com/Dieulot/status/427591050941964288">usually</a> take 200 ms. <a href="#note-3g-back" class="noteBack">↩</a>
+  <li id="note-progress-bar">The progress bar is fake, much like <a href="http://ricostacruz.com/nprogress/">NProgress</a>. Though it seems possible that a future version of InstantClick could show real progress by checking the HTTP <code>Content-Length</code> header. <a href="#note-progress-bar-back" class="noteBack">↩</a>
+</ol>

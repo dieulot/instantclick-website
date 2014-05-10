@@ -1,0 +1,40 @@
+<h2>InstantClick 3.0 is out</h2>
+
+<p><em style="font-size: 16px; color: #333;">InstantClick is a JavaScript library that dramatically speeds up your website, making navigation effectively instant in most cases. More information on <a href=".">the home page</a>.</em>
+
+<p>Today marks the release of InstantClick 3.0, major new features include preloading for mobile devices, and a progress bar.
+
+<h3>Preloading for mobile devices</h3>
+
+<p>InstantClick preloads pages on hover, but there’s no hover on mobile devices. Until today mobile devices were only getting pjax’s benefits, without preloading.
+
+<p>The solution turns out to be to preload on <em>touchstart</em>. When your finger starts tapping the screen, InstantClick will start preloading the page in the background. When a click is triggered, the page will have had 300 ms (Android) or 450 ms (iOS) to preload.
+
+<p>The 300/450 ms delay that devices impose are there for detecting double taps that are intended to zoom, InstantClick respects that and thus works without having to optimize your site for mobile devices. <sup id="note-mobile-site-back"><a href="#note-mobile-site">1</a></sup>
+
+<p>Because InstantClick preloads only one link at a time and that there’s a pretty good chance that tapping a link means you want to open it, this should not be a problem for your users’ data fees.
+
+<h3>Progress bar</h3>
+
+<p>If your site’s layout is a bit crowded, chances are users clicking for their first time on an instant link won’t notice that a page change has happened. This problem could obviate the UX benefits you got out of InstantClick; the progress bar solves that. When a page is displayed instantly, the progress bar appears and just fades away instantly, subtly signaling that the page changed.
+
+<p>This progress bar, much like <a href="http://ricostacruz.com/nprogress/">NProgress</a>, is fake. It’s only there to signal users that a page has changed or is being loaded. <sup id="note-fake-back"><a href="#note-fake">2</a></sup>
+
+<p>The progress bar solve a second problem. InstantClick (and pjax in general) hijack the browser’s loading cycle and with it, the browser’s loading indicator. While most links are displayed instantly, networks can be tricky, especially mobile ones. If for some reason a page is taking a long time to load, the progress bar indicates to users that something is happening, and that your website isn’t broken.
+
+<p>The bar is 2 pixels tall on desktop, and the double of that on mobiles so that it’s noticeable on tinier screens. When you’re zooming on a mobile device the bar automatically scales to an appropriate size. So even if you don’t have a mobile-optimized website, it just works.
+
+<p>The progress bar comes in with a sensible blue color by default, you can change its color or hide it with <a href="start.html#progress-bar">a few lines of CSS</a>.
+
+<h3>The rest</h3>
+
+<p>Tinier new features include <a href="start.html#scripts">new events</a>, <a href="start.html#assets">asset change detection</a>, the ability to <a href="start.html#black">blacklist</a> or <a href="start.html#white">whitelist</a> all links in a parent element, and bugfixes. InstantClick is now also available via <a href="http://bower.io/">Bower</a>: <code>bower install instantclick</code>.
+
+<p>A detailed list of changes is available <a href="https://github.com/dieulot/instantclick/compare/v2.1...v3.0">on GitHub</a>.
+
+<h3>Footnotes</h3>
+
+<ol id="footnotes">
+  <li id="note-mobile-site">If you have a website specifically for mobile devices, <a href="http://ftlabs.github.io/fastclick/">FastClick</a> might be a better option. <a href="#note-mobile-site-back" class="noteBack">↩</a>
+  <li id="note-fake">Though in the future, it seems possible to show the real progress by dividing Ajax’s response size by the HTTP <code>Content-Length</code> header. <a href="#note-fake-back" class="noteBack">↩</a>
+</ol>

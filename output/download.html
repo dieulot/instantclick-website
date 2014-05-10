@@ -1,0 +1,448 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Download InstantClick</title>
+<meta name="viewport" content="width=750">
+<style>body{font:18px/1.4 Iowan Old Style, Palatino, Calisto MT, Bitstream Charter, Georgia, serif;background:aliceblue;max-width:600px;margin:15px auto;overflow-y:scroll}a{color:#d22}a:visited{color:#911}::selection{background:lavender;color:#222}::-moz-selection{background:lavender;color:#222}#instantclick-bar{background:#d22}#header h1{margin:0;background:url('logo.png') left center no-repeat;background-size:contain;width:220px;height:48px}#header h1 a{display:block;text-indent:-999em;height:48px}#header ul{margin:10px 0 0;padding:0 5px;background:#556;font-family:Verdana, sans-serif;font-size:14px;border-radius:3px;list-style:none}#header li{display:inline-block}#header li a{color:#eee;text-decoration:none;padding:5px 10px;display:block}#header li a:hover{color:white;background-color:#800}#header li.on a{background:#b22;color:white}.twitter, .github{float:right}.twitter a{background:url('twitter.svg') center no-repeat}.github a{background:url('github.png') center no-repeat}.twitter a, .github a{text-indent:-999em;width:20px;background-size:20px}h2{color:#d22;margin-bottom:.56em}h3{color:#b11;margin:1.33em 0 .75em}.gist+h3{margin-top:1.66em}h4{color:#900;margin:1em 0 .66em}.gist+h4{margin-top:1.25em}h2+p, h3+p, h4+p{margin-top:0}.intro{margin-top:.83em;font-size:1.5em}.intro span{color:#d22;font-weight:bold}p+ul, p+ol{margin-top:-.75em}hr{border:none;text-align:center;font-size:12px;margin:18px 0}hr:after{color:rgba(187,17,17,.8);content:'••••';letter-spacing:30px}.gist+hr{margin-top:22px}.warning{background:rgba(255,165,0,.2);padding:.25em .5em;border-radius:3px;border:1px solid rgba(255,165,0,.5);font-size:17px}#downloads td{padding:0 20px 0 0}.support{font-size:.85em;width:100%;text-align:center;border-spacing:0;border:solid #aab;border-width:1px 0 0 1px}.support td, .support th{border:solid #aab;border-width:0 1px 1px 0}.btn{display:inline-block;color:white !important;background:#d22;border-radius:6px;padding:7px 10px 6px;text-decoration:none;text-align:center;font:16px/1 Helvetica Neue, sans-serif;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5)}.btn:hover{background:#c11;border-color:#c11;box-shadow:inset 0 1px 1px rgba(255,255,255,.2), 0 1px 1px rgba(0,0,0,.6)}.btn:active{background:#c11;position:relative;top:1px;box-shadow:inset 0 2px 5px rgba(0,0,0,.1)}.btn-big{border-radius:7px;font-size:18px;padding:10px 17px 9px}.btn small{font-size:.72em}code{background:#f8f8ff;font-size:14px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;white-space:pre;border:1px solid #ccc;border-bottom-color:#bbb;display:inline-block;border-radius:2px;padding:0 3px}sup{vertical-align:initial;position:relative;top:-.42em}sup a{text-decoration:none;margin:-.5em -.3em;padding:.5em}#footnotes li:target{background:#ffb;border-radius:1px}#footnotes li{font-size:16px;padding:3px}.noteBack{font-size:18px}#click-test{width:100%;text-align:center;border:solid #aab;border-width:1px 0 0 1px;border-collapse:collapse}#click-test td, #click-test th{border:solid #aab;border-width:0px 1px 1px 0px;width:40%}#link1:active{background:none}#link2{margin:30px;font-size:20px;padding:14px 22px 13px;background:#d22;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5);top:0}#click-test .results p{text-align:left;margin-left:10px}#footer{margin-top:5em;border-top:1px solid #ccd;font-size:.66em;padding-top:1em;text-align:center;color:#444}.gist{color:#000; font-size:14px}.gist pre{font:inherit;line-height:inherit;white-space:pre}.gist .gist-file{border:1px solid #ddd;border-bottom:1px solid #ccc;border-radius:3px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;margin-bottom:1em}.gist .gist-file .gist-data{overflow:auto;word-wrap:normal;background-color:#f8f8ff;font-size:100%}.gist .gist-file .gist-data .line-data{padding:.5em !important}.gist .gist-file .gist-data .line-pre{background:transparent !important;border:none !important;margin:0 !important;padding:0 !important}.gist .gist-file .gist-data .line-numbers{background-color:#ececec;color:#aaa;border-right:1px solid #ddd;text-align:right;padding:.5em}.gist .gist-file .gist-data .line-numbers .line-number{clear:right;display:block}.gist-syntax{background:#ffffff}.c{color:#999988;font-style:italic}.err{color:#a61717;background-color:#e3d2d2}.k{color:#000000;font-weight:bold}.o{color:#000000;font-weight:bold}.cm{color:#999988;font-style:italic}.cp{color:#999999;font-weight:bold}.c1{color:#999988;font-style:italic}.cs{color:#999999;font-weight:bold;font-style:italic}.gd{color:#000000;background-color:#fdd}.gd .x{color:#000000;background-color:#faa}.ge{color:#000000;font-style:italic}.gr{color:#a00}.gh{color:#999}.gi{color:#000000;background-color:#dfd}.gi .x{color:#000000;background-color:#afa}.go{color:#888}.gp{color:#555}.gs{font-weight:bold}.gu{color:#aaa}.gt{color:#a00}.kc{color:#000000;font-weight:bold}.kd{color:#000000;font-weight:bold}.kp{color:#000000;font-weight:bold}.kr{color:#000000;font-weight:bold}.kt{color:#445588;font-weight:bold}.m{color:#099}.s{color:#d14}.na{color:teal}.nb{color:#0086b3}.nc{color:#445588;font-weight:bold}.no{color:teal}.ni{color:purple}.ne{color:#990000;font-weight:bold}.nf{color:#990000;font-weight:bold}.nn{color:#555}.nt{color:navy}.nv{color:teal}.ow{color:#000000;font-weight:bold}.w{color:#bbb}.mf{color:#099}.mh{color:#099}.mi{color:#099}.mo{color:#099}.sb{color:#d14}.sc{color:#d14}.sd{color:#d14}.s2{color:#d14}.se{color:#d14}.sh{color:#d14}.si{color:#d14}.sx{color:#d14}.sr{color:#009926}.s1{color:#d14}.ss{color:#990073}.bp{color:#999}.vc{color:teal}.vg{color:teal}.vi{color:teal}.il{color:#099}</style>
+<meta name="description" content="Download and get started with InstantClick.">
+
+<div id="header">
+  <h1><a href=".">InstantClick</a></h1>
+  <ul>
+    <li class="github"><a href="https://github.com/dieulot/instantclick" title="GitHub">Github</a>
+    <li class="twitter"><a href="https://twitter.com/instantclickjs" title="Twitter">Twitter</a>
+    <li><a href=".">Home</a>
+    <li class="on"><a href="download.html">Download</a>
+    <li><a href="click-test.html">Click test</a>
+    <li><a href="changelog.html">Changelog</a>
+  </ul>
+</div>
+<h2>Download</h2>
+
+<p>The latest version is <b>3.0.1</b>, released on 2014/03/21 (see <a href="changelog.html">changelog</a>).
+
+<table id="downloads">
+  <tr>
+    <td><a href="v3.0.1/instantclick.min.js" class="btn btn-big" download>Production version<br><small>minified + gzipped, 2.5kb</small></a>
+    <td><a href="v3.0.1/instantclick.js" class="btn" download>Development version<br><small>Full sources, 19.3kb</small></a>
+</table>
+
+<h2>Getting started</h2>
+
+<p class="warning"><strong>Upgrading from 2.0?</strong> Blacklisting is now <a href="#blacklisting">the default</a>.
+
+<h3>Sections</h3>
+
+<ul>
+  <li><a href="#preloading">Preloading</a>
+  <li><a href="#blacklisting">Blacklisting (or whitelisting) links</a>
+  <li><a href="#scripts">Events and script re-evaluation</a>
+  <li><a href="#assets">Tracking assets changes</a>
+  <li><a href="#progress-bar">Customizing the progress bar</a>
+</ul>
+
+<h3 id="preloading">Preloading</h3>
+
+<h4 id="hover">On hover</h4>
+
+<p>Preloading kicks in when a user hovers over a link. If the user has a decent connection and your pages don’t take too long to be served, pages will display instantly.
+
+<p>Include InstantClick and initialize it near the end of your pages:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line" id="file-gistfile1-html-LC1">...</div><div class="line" id="file-gistfile1-html-LC2"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;instantclick.min.js&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line" id="file-gistfile1-html-LC3"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div><div class="line"><span class="nt">&lt;/body&gt;</span></div><div class="line"><span class="nt">&lt;/html&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>Then head over to <a href="#blacklisting">Blacklisting (or whitelisting) links</a> to know how and what not to preload.
+
+<h4 id="delay">On hover after a delay</h4>
+
+<p>If the user is still hovering over a link after a delay of your choice has passed, the page will start preloading.
+
+<p>Recommended delays are 100 ms and 50 ms. More than 100 ms may actually be worse than on mousedown (below), less than 50 ms likely won’t be perceptible.
+
+<p>To make InstantClick preload after a delay, pass the delay in milliseconds as an argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h4 id="mousedown">On mousedown</h4>
+
+<p>Preload when the user presses his mouse button (the click happens on release). This brings nearly zero overhead to your server and still bring a “magical” speed boost.
+
+<p>To use, pass <code>'mousedown'</code> as an argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h3 id="blacklisting">Blacklisting (or whitelisting) links</h3>
+
+<p class="warning">Before InstantClick 2.1, passing a <code>true</code> argument would enable <strong>blacklisting</strong>. Blacklisting is now the default. Passing <code>true</code> now enables <strong>whitelisting</strong>.
+
+<p>You can restrict what links InstantClick preloads by either <a href="#black">blacklisting</a> (default) or <a href="#white">whitelisting</a> them.
+
+<p>In general, you’ll use blacklisting when you start a website from scratch, or when your website consists of only a few pages. If your website has pages that use different stylesheets/scripts in the <code>&lt;head&gt;</code>, or if you have a lot of actions (logout, delete, …) triggered by links, whitelisting links one by one is a safer route.
+
+<p>What to blacklist, and to NOT whitelist:
+
+<ul>
+  <li>Links pointing to an action, such as delete and logout links.
+  <li>Links pointing to non-HTML content that takes a while to load.
+  <li>Links pointing to a page with different styles/scripts in the <code>&lt;head&gt;</code>.
+</ul>
+
+<p>Some links are already blacklisted internally, and can’t be whitelisted:
+
+<ul>
+  <li>Links with a <code>target</code> or <code>download</code> attribute.
+  <li>Links with a different domain or protocol.
+  <li>Links pointing to an #anchor on the same page.
+</ul>
+
+<h4 id="black">Blacklisting</h4>
+
+<p>All your website’s links will be preloadable by default.
+
+<p>To blacklist a link, add it a <code>data-no-instant</code> attribute.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>To blacklist all links in a parent element, add <code>data-no-instant</code> to that element.
+
+<h4 id="white">Whitelisting</h4>
+
+<p>With whitelisting, no links will get preloaded by default.
+
+<p>To enable whitelisting, pass a <code>true</code> argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+<span class="line-number" rel="file-gistfile1-js-L2">2</span>
+<span class="line-number" rel="file-gistfile1-js-L3">3</span>
+<span class="line-number" rel="file-gistfile1-js-L4">4</span>
+<span class="line-number" rel="file-gistfile1-js-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span></div><div class="line"><span class="cm">/* or */</span></div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span></div><div class="line"><span class="cm">/* or */</span></div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>To whitelist a link, add it a <code>data-instant</code> attribute.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;some-page.html&quot;</span> <span class="na">data-instant</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>To whitelist all links in a parent element, add <code>data-instant</code> to that element.
+
+<h3 id="scripts">Events and script re-evaluation</h3>
+
+
+<p>InstantClick technically makes your website a single-page application, so there’s no <code>DOMContentLoaded</code> firing on page changes anymore. Because of this, other scripts might need to be tweaked to work correctly with InstantClick.
+
+<p>InstantClick fires four events to provide hooks into the lifecycle of the page:
+
+<ul>
+  <li><p><code>change</code> : The page is changed, also triggered on initial page load and if InstantClick is not supported. Replaces <code>DOMContentLoaded</code>.
+
+  <p>Its callback can take an optional <code>isInitialLoad</code> argument, it’s a boolean that will be <code>true</code> when it’s the initial page change or when InstantClick isn’t supported, and <code>false</code> when InstantClick changes the page.
+  <li><p><code>fetch</code> : A page starts preloading.
+  <li><p><code>receive</code> : A page has been preloaded.
+  <li><p><code>wait</code> : The user has clicked on a link, but the page isn’t preloaded yet. Only triggers when the page isn’t displayed instantly.
+</ul>
+
+<p>To listen to an event, for example <code>change</code>, use <code>InstantClick.on</code>:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">'change'</span><span class="p">,</span> <span class="nx">yourCallback</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>You’ll want to call <code>InstantClick.on</code> before <code>InstantClick.init</code>, because the <code>change</code> event is triggered on initial page load too, including when the browser doesn’t support pushState.
+
+<hr>
+
+<p>If you have a script in the <code>&lt;body&gt;</code> that you wish not to re-evaluate when InstantClick displays a page, add it a <code>data-no-instant</code> attribute.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;I’m only run once.&quot;</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>If other scripts conflict with InstantClick, it’s advised to add a <code>data-no-instant</code> attribute to all of them, then to remove each attribute one by one until you find the culprit. You might get an idea on how to solve compatibility problems by checking examples (in CoffeeScript) on the <a href="http://reed.github.io/turbolinks-compatibility/">Turbolinks Compatibility</a> site.
+
+<hr>
+
+<p>For an example, here’s how to make Google Analytics (late 2013 code) work:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+<span class="line-number" rel="file-gistfile1-html-L6">6</span>
+<span class="line-number" rel="file-gistfile1-html-L7">7</span>
+<span class="line-number" rel="file-gistfile1-html-L8">8</span>
+<span class="line-number" rel="file-gistfile1-html-L9">9</span>
+<span class="line-number" rel="file-gistfile1-html-L10">10</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;instantclick.min.js&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span></div><div class="line"><span class="cm">/* Google Analytics code here, without ga(&#39;send&#39;, &#39;pageview&#39;) */</span></div><div class="line">&nbsp;</div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></div><div class="line">  <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;pageview&#39;</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span></div><div class="line"><span class="p">});</span></div><div class="line">&nbsp;</div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span></div><div class="line"><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h3 id="assets">Tracking assets changes</h3>
+
+<p>To check when a stylesheet or script (either external or inline) is updated, add it a <code>data-instant-track</code> attribute:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;script.js&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line">&nbsp;</div><div class="line"><span class="nt">&lt;style </span><span class="na">data-instant-track</span><span class="nt">&gt;body</span> <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="nb">aliceblue</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-instant-track</span><span class="nt">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">timingStart</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>InstantClick will check for changes in the <code>href</code> or <code>src</code> attributes if they exist. To indicate that a file is updated, modify its attribute:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css?20140308&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;script.js?20140308&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>If it’s an inline script or style, InstantClick will check for a change in the element’s content.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;style </span><span class="na">data-instant-track</span><span class="nt">&gt;body</span> <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="nb">midnightblue</span><span class="p">;</span> <span class="k">font</span><span class="o">:</span> <span class="m">13px</span> <span class="n">Helvetica</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-instant-track</span><span class="nt">&gt;</span><span class="kd">var</span> <span class="nx">timingStart</span> <span class="o">=</span> <span class="nx">performance</span> <span class="o">&amp;&amp;</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>When any change is detected, InstantClick will reload the page, thus making the browser re-evaluate all scripts and styles.
+
+<h3 id="progress-bar">Customizing the progress bar</h3>
+
+<p>By default, the progress bar’s color is <code style="background: #29d">#29d</code>, you can change that with CSS:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-css-L1">1</span>
+<span class="line-number" rel="file-gistfile1-css-L2">2</span>
+<span class="line-number" rel="file-gistfile1-css-L3">3</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nf">#instantclick-bar</span> <span class="p">{</span></div><div class="line">  <span class="k">background</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span></div><div class="line"><span class="p">}</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>You may also make the bar go away:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-css-L1">1</span>
+<span class="line-number" rel="file-gistfile1-css-L2">2</span>
+<span class="line-number" rel="file-gistfile1-css-L3">3</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nf">#instantclick</span> <span class="p">{</span></div><div class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span></div><div class="line"><span class="p">}</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">InstantClick is released under the <a href="license.html">MIT License</a>, © 2014 Alexandre Dieulot</div>
+<script src="script-6.js" data-no-instant></script>

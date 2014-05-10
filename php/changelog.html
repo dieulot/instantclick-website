@@ -1,0 +1,65 @@
+<h2>Changelog</h2>
+
+<h3 id="3.0.1">3.0.1 (2014/03/21)</h3>
+
+<ul>
+  <li>Bugfix for non-mobile touch browsers, where previously InstantClick would throw an error.
+</ul>
+
+<p><a href="https://github.com/dieulot/instantclick/compare/v3.0...v3.0.1">See commits on GitHub.</a>
+
+<h3 id="3.0">3.0 (2014/03/08)</h3>
+
+<ul>
+  <li>Preloads on “touchstart”, for mobile devices.
+  <li><a href="start.html#progress-bar">Progress bar</a>, so the user sees when a page change happen.
+  <li><a href="start.html#scripts">New events.</a>
+  <li><a href="start.html#assets">Asset change detection.</a>
+  <li>Ability to <a href="start.html#black">blacklist</a> or <a href="start.html#white">whitelist</a> all links in a parent element.
+  <li>Available via <a href="http://bower.io/">Bower</a>: <code>bower install instantclick</code>
+  <li>Bugfixes.
+</ul>
+
+<p>If you’d like to share the news or get more detailed informations, there’s an announcement page: <a href="3.0.html">InstantClick 3.0 is out</a>.
+
+<p><a href="https://github.com/dieulot/instantclick/compare/v2.1...v3.0">See commits on GitHub.</a>
+
+<h3 id="2.1">2.1 (2014/02/09)</h3>
+
+<ul>
+  <li>Blacklisting is now the default (whitelisting by default was confusing).
+  <li>Bugfix: HTML entities would show up in the title on page change.
+</ul>
+
+<p><a href="https://github.com/dieulot/instantclick/compare/v2.0...v2.1">See commits on GitHub.</a>
+
+<h3 id="2.0">2.0 (2014/02/08)</h3>
+
+<ul>
+  <li>Option to set a delay before preloading starts.
+  <li>Option to preload on mousedown.
+  <li>Prevent the “preload, display, re-preload” situation by not preloading if a page has been displayed in the last 100 ms.
+  <li>Set body’s outerHTML instead of innerHTML on page change.
+  <li>Bugfix: Scroll correctly when using the browser’s back or forward button.
+</ul>
+
+<p><a href="https://github.com/dieulot/instantclick/compare/v1.1...v2.0">See commits on GitHub.</a>
+
+<h3 id="1.1">1.1 (2014/01/16)</h3>
+
+<ul>
+  <li>Whitelist mode.
+  <li><code>InstantClick.on</code>.
+  <li><code>InstantClick.supported</code>.
+  <li>Redirect if we’ve preloaded non-HTML content.
+  <li>Bugfix: <code>&lt;a&gt;</code> elements can now contain child elements.
+  <li>Bugfix on the browser’s back/forward button.
+</ul>
+
+<p><a href="https://github.com/dieulot/instantclick/compare/v1.0...v1.1">See commits on GitHub.</a>
+
+<h3 id="1.0">1.0 (2014/01/08)</h3>
+
+<p>Initial release.
+
+<p><a href="https://github.com/dieulot/instantclick/compare/95928a8a2d9faba229a60a207c70ae139d88d6f4...v1.0">See commits on GitHub.</a>

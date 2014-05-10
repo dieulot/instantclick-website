@@ -1,0 +1,90 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>InstantClick — JS library to make your website instant</title>
+<meta name="viewport" content="width=750">
+<style>body{font:18px/1.4 Iowan Old Style, Palatino, Calisto MT, Bitstream Charter, Georgia, serif;background:aliceblue;max-width:600px;margin:15px auto;overflow-y:scroll}a{color:#d22}a:visited{color:#911}::selection{background:lavender;color:#222}::-moz-selection{background:lavender;color:#222}#instantclick-bar{background:#d22}#header h1{margin:0;background:url('logo.png') left center no-repeat;background-size:contain;width:220px;height:48px}#header h1 a{display:block;text-indent:-999em;height:48px}#header ul{margin:10px 0 0;padding:0 5px;background:#556;font-family:Verdana, sans-serif;font-size:14px;border-radius:3px;list-style:none}#header li{display:inline-block}#header li a{color:#eee;text-decoration:none;padding:5px 10px;display:block}#header li a:hover{color:white;background-color:#800}#header li.on a{background:#b22;color:white}.twitter, .github{float:right}.twitter a{background:url('twitter.svg') center no-repeat}.github a{background:url('github.png') center no-repeat}.twitter a, .github a{text-indent:-999em;width:20px;background-size:20px}h2{color:#d22;margin-bottom:.56em}h3{color:#b11;margin:1.33em 0 .75em}.gist+h3{margin-top:1.66em}h4{color:#900;margin:1em 0 .66em}.gist+h4{margin-top:1.25em}h2+p, h3+p, h4+p{margin-top:0}.intro{margin-top:.83em;font-size:1.5em}.intro span{color:#d22;font-weight:bold}p+ul, p+ol{margin-top:-.75em}hr{border:none;text-align:center;font-size:12px;margin:18px 0}hr:after{color:rgba(187,17,17,.8);content:'••••';letter-spacing:30px}.gist+hr{margin-top:22px}.warning{background:rgba(255,165,0,.2);padding:.25em .5em;border-radius:3px;border:1px solid rgba(255,165,0,.5);font-size:17px}#downloads td{padding:0 20px 0 0}.support{font-size:.85em;width:100%;text-align:center;border-spacing:0;border:solid #aab;border-width:1px 0 0 1px}.support td, .support th{border:solid #aab;border-width:0 1px 1px 0}.btn{display:inline-block;color:white !important;background:#d22;border-radius:6px;padding:7px 10px 6px;text-decoration:none;text-align:center;font:16px/1 Helvetica Neue, sans-serif;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5)}.btn:hover{background:#c11;border-color:#c11;box-shadow:inset 0 1px 1px rgba(255,255,255,.2), 0 1px 1px rgba(0,0,0,.6)}.btn:active{background:#c11;position:relative;top:1px;box-shadow:inset 0 2px 5px rgba(0,0,0,.1)}.btn-big{border-radius:7px;font-size:18px;padding:10px 17px 9px}.btn small{font-size:.72em}code{background:#f8f8ff;font-size:14px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;white-space:pre;border:1px solid #ccc;border-bottom-color:#bbb;display:inline-block;border-radius:2px;padding:0 3px}sup{vertical-align:initial;position:relative;top:-.42em}sup a{text-decoration:none;margin:-.5em -.3em;padding:.5em}#footnotes li:target{background:#ffb;border-radius:1px}#footnotes li{font-size:16px;padding:3px}.noteBack{font-size:18px}#click-test{width:100%;text-align:center;border:solid #aab;border-width:1px 0 0 1px;border-collapse:collapse}#click-test td, #click-test th{border:solid #aab;border-width:0px 1px 1px 0px;width:40%}#link1:active{background:none}#link2{margin:30px;font-size:20px;padding:14px 22px 13px;background:#d22;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5);top:0}#click-test .results p{text-align:left;margin-left:10px}#footer{margin-top:5em;border-top:1px solid #ccd;font-size:.66em;padding-top:1em;text-align:center;color:#444}.gist{color:#000; font-size:14px}.gist pre{font:inherit;line-height:inherit;white-space:pre}.gist .gist-file{border:1px solid #ddd;border-bottom:1px solid #ccc;border-radius:3px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;margin-bottom:1em}.gist .gist-file .gist-data{overflow:auto;word-wrap:normal;background-color:#f8f8ff;font-size:100%}.gist .gist-file .gist-data .line-data{padding:.5em !important}.gist .gist-file .gist-data .line-pre{background:transparent !important;border:none !important;margin:0 !important;padding:0 !important}.gist .gist-file .gist-data .line-numbers{background-color:#ececec;color:#aaa;border-right:1px solid #ddd;text-align:right;padding:.5em}.gist .gist-file .gist-data .line-numbers .line-number{clear:right;display:block}.gist-syntax{background:#ffffff}.c{color:#999988;font-style:italic}.err{color:#a61717;background-color:#e3d2d2}.k{color:#000000;font-weight:bold}.o{color:#000000;font-weight:bold}.cm{color:#999988;font-style:italic}.cp{color:#999999;font-weight:bold}.c1{color:#999988;font-style:italic}.cs{color:#999999;font-weight:bold;font-style:italic}.gd{color:#000000;background-color:#fdd}.gd .x{color:#000000;background-color:#faa}.ge{color:#000000;font-style:italic}.gr{color:#a00}.gh{color:#999}.gi{color:#000000;background-color:#dfd}.gi .x{color:#000000;background-color:#afa}.go{color:#888}.gp{color:#555}.gs{font-weight:bold}.gu{color:#aaa}.gt{color:#a00}.kc{color:#000000;font-weight:bold}.kd{color:#000000;font-weight:bold}.kp{color:#000000;font-weight:bold}.kr{color:#000000;font-weight:bold}.kt{color:#445588;font-weight:bold}.m{color:#099}.s{color:#d14}.na{color:teal}.nb{color:#0086b3}.nc{color:#445588;font-weight:bold}.no{color:teal}.ni{color:purple}.ne{color:#990000;font-weight:bold}.nf{color:#990000;font-weight:bold}.nn{color:#555}.nt{color:navy}.nv{color:teal}.ow{color:#000000;font-weight:bold}.w{color:#bbb}.mf{color:#099}.mh{color:#099}.mi{color:#099}.mo{color:#099}.sb{color:#d14}.sc{color:#d14}.sd{color:#d14}.s2{color:#d14}.se{color:#d14}.sh{color:#d14}.si{color:#d14}.sx{color:#d14}.sr{color:#009926}.s1{color:#d14}.ss{color:#990073}.bp{color:#999}.vc{color:teal}.vg{color:teal}.vi{color:teal}.il{color:#099}</style>
+<meta name="description" content="InstantClick makes following links in your website instant.">
+
+<div id="header">
+  <h1><a href=".">InstantClick</a></h1>
+  <ul>
+    <li class="github"><a href="https://github.com/dieulot/instantclick" title="GitHub">Github</a>
+    <li class="twitter"><a href="https://twitter.com/instantclickjs" title="Twitter">Twitter</a>
+    <li class="on"><a href=".">Home</a>
+    <li><a href="download.html">Download</a>
+    <li><a href="click-test.html">Click test</a>
+    <li><a href="changelog.html">Changelog</a>
+  </ul>
+</div>
+<p class="intro"><span>InstantClick</span> is a JavaScript library that dramatically speeds up your website, making navigation effectively instant in most cases.
+
+<h3>Why</h3>
+
+<p>Despite huge bandwidth increases, websites don’t get much faster. This is because the biggest botteneck in loading web pages is latency.<sup id="note-latency-back"><a href="#note-latency">1</a></sup>
+
+<h3>How does it work</h3>
+
+<p>Latency is inevitable with today’s internet architecture so InstantClick cheats by preloading links you are likely to click on.
+
+<p>Before visitors click on a link, they hover over that link. Between these two events, 200 ms to 300 ms usually pass by (<a href="click-test.html">test yourself here</a>). InstantClick makes use of that time to preload the page, so that the page is already there when you click.
+
+<p>On mobile devices, preloading starts on “touchstart”, letting 300 ms (Android) to 450 ms (iOS) for preloading the page.<sup id="note-3g-back"><a href="#note-3g">2</a></sup>
+
+<p>If you want your website to not be flooded by requests, you can set a delay before preloading starts when users hover a link. It will still <a href="http://www.nngroup.com/articles/response-times-3-important-limits/" title="Jakob Nielsen – Response Times: The 3 Important Limits">feel instant</a>.
+
+<p>If you don’t want any wasted request, you may preload on “mousedown”. This is when you press your mouse button (a click is when you release it).
+
+<p>When loading pages with InstantClick, the browser doesn’t show its standard loading indicators anymore. To make sure the user knows a page has changed, InstantClick includes a (customizable) progress bar.<sup id="note-progress-bar-back"><a href="#note-progress-bar">3</a></sup> The bar automatically scales to appropriate size on mobile devices, so it works even when your site isn’t optimized for mobiles.
+
+<hr>
+
+<p>InstantClick uses pushState and Ajax (a combo known as <a href="https://github.com/defunkt/jquery-pjax">pjax</a>), replacing only the body and the title in the head.
+
+<p>Ajax brings two nice benefits in and of itself:
+<ul>
+  <li>Your browser doesn’t have to throw and recompile scripts and styles on each page change anymore.
+  <li>You don’t get a white flash while your browser is waiting for a page to display, making your website <em>feel</em> faster.
+</ul>
+
+<p>InstantClick supports the following browsers’ versions:
+
+<table class="support">
+  <tr>
+    <th>IE
+    <th>Firefox
+    <th>Chrome
+    <th>Safari
+    <th>Opera
+
+    <th>iOS Safari
+    <th>Android Browser
+    <th>Android Chrome
+  <tr>
+    <td>10+
+    <td>4.0+
+    <td>5+
+    <td>5.0+
+    <td>11.5+
+
+    <td>5.0+
+    <td>4.4+
+    <td>18+
+</table>
+
+<p>According to <a href="http://gs.statcounter.com/">StatCounter</a>, 70% of the world support InstantClick. When a browser don’t support it, InstantClick fully degrades.
+
+<h3>Getting started</h3>
+
+<p>Head to the <a href="download.html">Download</a> page and follow the instructions.
+
+<p>You can follow InstantClick’s news on <a href="https://twitter.com/instantclickjs">Twitter</a>, or participate in InstantClick’s development on <a href="https://github.com/dieulot/instantclick">Github</a>.
+
+<h3>Footnotes</h3>
+
+<ol id="footnotes">
+  <li id="note-latency">Check out <a href="http://www.igvita.com/2012/07/19/latency-the-new-web-performance-bottleneck/">Latency: The New Web Performance Bottleneck</a> for a good summary about bandwidth vs. latency effects on web pages. <a href="#note-latency-back" class="noteBack">↩</a>
+  <li id="note-3g">On 3G, requests <a href="https://twitter.com/Dieulot/status/427591050941964288">usually</a> take 200 ms. <a href="#note-3g-back" class="noteBack">↩</a>
+  <li id="note-progress-bar">The progress bar is fake, much like <a href="http://ricostacruz.com/nprogress/">NProgress</a>. Though it seems possible that a future version of InstantClick could show real progress by checking the HTTP <code>Content-Length</code> header. <a href="#note-progress-bar-back" class="noteBack">↩</a>
+</ol>
+<div id="footer">InstantClick is released under the <a href="license.html">MIT License</a>, © 2014 Alexandre Dieulot</div>
+<script src="script-6.js" data-no-instant></script>

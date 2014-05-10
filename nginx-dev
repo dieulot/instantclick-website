@@ -1,0 +1,22 @@
+server {
+	server_name instantclick.io.dev;
+	root /home/alex/instantclick/instantclick.io/php;
+
+	location /output {
+		return 302 /output/;
+	}
+
+	rewrite ^/output/(.*)$ /../output/$1;
+
+	rewrite ^/([^/]+)\.html$ /index.php?page=$1;
+
+	index index.php index.html index.htm;
+
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+		fastcgi_index index.php;
+		include fastcgi_params;
+	}
+}
