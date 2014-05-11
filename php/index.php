@@ -114,6 +114,9 @@ $descriptions = array(
 <meta name="viewport" content="width=750">
 <style><?php echo $style ?></style>
 <meta name="description" content="<?php echo $descriptions[$page] ?>">
+<?php if ($page != '3.0'): ?>
+<link rel="canonical" href="http://instantclick.io/<?php if ($page != 'welcome') { echo $page; } ?>">
+<?php endif ?>
 
 <div id="header">
   <h1><a href=".">InstantClick</a></h1>
