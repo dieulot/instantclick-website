@@ -2,7 +2,7 @@ server {
 	server_name new.instantclick.io;
 	root /home/sites/instantclick.io/output;
 
-	expires 1m;
+	expires 30m;
 
   location ~ ^/(whitelist|start)\.html$ {
     return 302 /download;
