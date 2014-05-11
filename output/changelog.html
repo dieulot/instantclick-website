@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=750">
 <style>body{font:18px/1.4 Iowan Old Style, Palatino, Calisto MT, Bitstream Charter, Georgia, serif;background:aliceblue;max-width:600px;margin:15px auto;overflow-y:scroll}a{color:#d22}a:visited{color:#911}::selection{background:lavender;color:#222}::-moz-selection{background:lavender;color:#222}#instantclick-bar{background:#d22}#header h1{margin:0;background:url('logo.png') left center no-repeat;background-size:contain;width:220px;height:48px}#header h1 a{display:block;text-indent:-999em;height:48px}#header ul{margin:10px 0 0;padding:0 5px;background:#556;font-family:Verdana, sans-serif;font-size:14px;border-radius:3px;list-style:none}#header li{display:inline-block}#header li a{color:#eee;text-decoration:none;padding:5px 10px;display:block}#header li a:hover{color:white;background-color:#800}#header li.on a{background:#b22;color:white}.twitter, .github{float:right}.twitter a{background:url('twitter.svg') center no-repeat}.github a{background:url('github.png') center no-repeat}.twitter a, .github a{text-indent:-999em;width:20px;background-size:20px}h2{color:#d22;margin-bottom:.56em}h3{color:#b11;margin:1.33em 0 .75em}.gist+h3{margin-top:1.66em}h4{color:#900;margin:1em 0 .66em}.gist+h4{margin-top:1.25em}h2+p, h3+p, h4+p{margin-top:0}.intro{margin-top:.83em;font-size:1.5em}.intro span{color:#d22;font-weight:bold}p+ul, p+ol{margin-top:-.75em}hr{border:none;text-align:center;font-size:12px;margin:18px 0}hr:after{color:rgba(187,17,17,.8);content:'••••';letter-spacing:30px}.gist+hr{margin-top:22px}.warning{background:rgba(255,165,0,.2);padding:.25em .5em;border-radius:3px;border:1px solid rgba(255,165,0,.5);font-size:17px}#downloads td{padding:0 20px 0 0}.support{font-size:.85em;width:100%;text-align:center;border-spacing:0;border:solid #aab;border-width:1px 0 0 1px}.support td, .support th{border:solid #aab;border-width:0 1px 1px 0}.btn{display:inline-block;color:white !important;background:#d22;border-radius:6px;padding:7px 10px 6px;text-decoration:none;text-align:center;font:16px/1 Helvetica Neue, sans-serif;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5)}.btn:hover{background:#c11;border-color:#c11;box-shadow:inset 0 1px 1px rgba(255,255,255,.2), 0 1px 1px rgba(0,0,0,.6)}.btn:active{background:#c11;position:relative;top:1px;box-shadow:inset 0 2px 5px rgba(0,0,0,.1)}.btn-big{border-radius:7px;font-size:18px;padding:10px 17px 9px}.btn small{font-size:.72em}code{background:#f8f8ff;font-size:14px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;white-space:pre;border:1px solid #ccc;border-bottom-color:#bbb;display:inline-block;border-radius:2px;padding:0 3px}sup{vertical-align:initial;position:relative;top:-.42em}sup a{text-decoration:none;margin:-.5em -.3em;padding:.5em}#footnotes li:target{background:#ffb;border-radius:1px}#footnotes li{font-size:16px;padding:3px}.noteBack{font-size:18px}#click-test{width:100%;text-align:center;border:solid #aab;border-width:1px 0 0 1px;border-collapse:collapse}#click-test td, #click-test th{border:solid #aab;border-width:0px 1px 1px 0px;width:40%}#link1:active{background:none}#link2{margin:30px;font-size:20px;padding:14px 22px 13px;background:#d22;border:1px solid #d22;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.5);top:0}#click-test .results p{text-align:left;margin-left:10px}#footer{margin-top:5em;border-top:1px solid #ccd;font-size:.66em;padding-top:1em;text-align:center;color:#444}.gist{color:#000; font-size:14px}.gist pre{font:inherit;line-height:inherit;white-space:pre}.gist .gist-file{border:1px solid #ddd;border-bottom:1px solid #ccc;border-radius:3px;font-family:Consolas, Menlo, DejaVu Sans Mono, monospace;margin-bottom:1em}.gist .gist-file .gist-data{overflow:auto;word-wrap:normal;background-color:#f8f8ff;font-size:100%}.gist .gist-file .gist-data .line-data{padding:.5em !important}.gist .gist-file .gist-data .line-pre{background:transparent !important;border:none !important;margin:0 !important;padding:0 !important}.gist .gist-file .gist-data .line-numbers{background-color:#ececec;color:#aaa;border-right:1px solid #ddd;text-align:right;padding:.5em}.gist .gist-file .gist-data .line-numbers .line-number{clear:right;display:block}.gist-syntax{background:#ffffff}.c{color:#999988;font-style:italic}.err{color:#a61717;background-color:#e3d2d2}.k{color:#000000;font-weight:bold}.o{color:#000000;font-weight:bold}.cm{color:#999988;font-style:italic}.cp{color:#999999;font-weight:bold}.c1{color:#999988;font-style:italic}.cs{color:#999999;font-weight:bold;font-style:italic}.gd{color:#000000;background-color:#fdd}.gd .x{color:#000000;background-color:#faa}.ge{color:#000000;font-style:italic}.gr{color:#a00}.gh{color:#999}.gi{color:#000000;background-color:#dfd}.gi .x{color:#000000;background-color:#afa}.go{color:#888}.gp{color:#555}.gs{font-weight:bold}.gu{color:#aaa}.gt{color:#a00}.kc{color:#000000;font-weight:bold}.kd{color:#000000;font-weight:bold}.kp{color:#000000;font-weight:bold}.kr{color:#000000;font-weight:bold}.kt{color:#445588;font-weight:bold}.m{color:#099}.s{color:#d14}.na{color:teal}.nb{color:#0086b3}.nc{color:#445588;font-weight:bold}.no{color:teal}.ni{color:purple}.ne{color:#990000;font-weight:bold}.nf{color:#990000;font-weight:bold}.nn{color:#555}.nt{color:navy}.nv{color:teal}.ow{color:#000000;font-weight:bold}.w{color:#bbb}.mf{color:#099}.mh{color:#099}.mi{color:#099}.mo{color:#099}.sb{color:#d14}.sc{color:#d14}.sd{color:#d14}.s2{color:#d14}.se{color:#d14}.sh{color:#d14}.si{color:#d14}.sx{color:#d14}.sr{color:#009926}.s1{color:#d14}.ss{color:#990073}.bp{color:#999}.vc{color:teal}.vg{color:teal}.vi{color:teal}.il{color:#099}</style>
 <meta name="description" content="InstantClick’s progress across versions, release notes.">
+<link rel="canonical" href="http://instantclick.io/changelog">
 
 <div id="header">
   <h1><a href=".">InstantClick</a></h1>
@@ -11,9 +12,9 @@
     <li class="github"><a href="https://github.com/dieulot/instantclick" title="GitHub">Github</a>
     <li class="twitter"><a href="https://twitter.com/instantclickjs" title="Twitter">Twitter</a>
     <li><a href=".">Home</a>
-    <li><a href="download.html">Download</a>
-    <li><a href="click-test.html">Click test</a>
-    <li class="on"><a href="changelog.html">Changelog</a>
+    <li><a href="download">Download</a>
+    <li><a href="click-test">Click test</a>
+    <li class="on"><a href="changelog">Changelog</a>
   </ul>
 </div>
 <h2>Changelog</h2>
@@ -30,10 +31,10 @@
 
 <ul>
   <li>Preloads on “touchstart”, for mobile devices.
-  <li><a href="start.html#progress-bar">Progress bar</a>, so the user sees when a page change happen.
-  <li><a href="start.html#scripts">New events.</a>
-  <li><a href="start.html#assets">Asset change detection.</a>
-  <li>Ability to <a href="start.html#black">blacklist</a> or <a href="start.html#white">whitelist</a> all links in a parent element.
+  <li><a href="download#progress-bar">Progress bar</a>, so the user sees when a page change happen.
+  <li><a href="download#scripts">New events.</a>
+  <li><a href="download#assets">Asset change detection.</a>
+  <li>Ability to <a href="download#black">blacklist</a> or <a href="download#white">whitelist</a> all links in a parent element.
   <li>Available via <a href="http://bower.io/">Bower</a>: <code>bower install instantclick</code>
   <li>Bugfixes.
 </ul>
@@ -81,5 +82,5 @@
 <p>Initial release.
 
 <p><a href="https://github.com/dieulot/instantclick/compare/95928a8a2d9faba229a60a207c70ae139d88d6f4...v1.0">See commits on GitHub.</a>
-<div id="footer">InstantClick is released under the <a href="license.html">MIT License</a>, © 2014 Alexandre Dieulot</div>
+<div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
 <script src="script-6.js" data-no-instant></script>
