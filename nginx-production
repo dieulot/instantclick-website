@@ -1,5 +1,5 @@
 server {
-	server_name new.instantclick.io;
+	server_name ams.instantclick.io;
 	root /home/sites/instantclick.io/output;
 
 	expires 10m;
