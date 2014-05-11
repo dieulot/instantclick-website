@@ -71,12 +71,6 @@ if (defined('STDIN')) {
       'favicon.ico',
       'README.md'
     );
-    /*if (!file_exists('../dieulot.github.io/v' . $last_ver)) {
-      mkdir('../dieulot.github.io/v' . $last_ver);
-    }
-    foreach ($files as $file) {
-      copy($export_folder . '/' . $file, '../dieulot.github.io/' . $file);
-    }*/
 
     exit;
   }
@@ -131,12 +125,12 @@ $menu_items = array(
   array('changelog', 'Changelog')
 );
 foreach ($menu_items as $item): ?>
-    <li<?php if ($item[0] == $page || ($page == '3.0' && $item[0] == 'changelog')) { echo ' class="on"'; } ?>><a href="<?php echo $item[0] == 'welcome' ? '.' : ($item[0] . '.html'); ?>"><?php echo $item[1] ?></a>
+    <li<?php if ($item[0] == $page || ($page == '3.0' && $item[0] == 'changelog')) { echo ' class="on"'; } ?>><a href="<?php echo $item[0] == 'welcome' ? '.' : $item[0]; ?>"><?php echo $item[1] ?></a>
 <?php endforeach ?>
   </ul>
 </div>
 <?php include($page . '.html') ?>
-<div id="footer">InstantClick is released under the <a href="license.html">MIT License</a>, © 2014 Alexandre Dieulot</div>
+<div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
 <script src="script-<?php echo $style_rev ?>.js" data-no-instant></script>
 <?php
 if (defined('STDIN')) {
