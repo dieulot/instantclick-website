@@ -10,9 +10,6 @@ $pages = array(
   'changelog',
   '3.0',
   'license',
-
-  'whitelist',
-  'start'
 );
 
 $style = file_get_contents('style.css');
@@ -28,18 +25,26 @@ if (defined('STDIN')) {
     ob_start();
   }
   else {
+    if (file_exists($export_folder)) {
+      function delTree($dir) {
+        $files = array_diff(scandir($dir), array('.','..'));
+        foreach ($files as $file) {
+          (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
+        }
+        return rmdir($dir);
+      }
+      delTree($export_folder);
+    }
+    mkdir($export_folder);
+    chmod($export_folder, 0777);
+
     foreach ($pages as $page) {
       include(__FILE__);
-    }
-
-    if (!file_exists($export_folder)) {
-      mkdir($export_folder);
     }
 
     //file_put_contents($export_folder . '/style.css', $style);
 
     copy('script-' . $style_rev . '.js', $export_folder . '/script-' . $style_rev . '.js');
-    copy('CNAME', $export_folder . '/CNAME');
     if (!file_exists($export_folder . '/v' . $last_ver)) {
       mkdir($export_folder . '/v' . $last_ver);
     }
@@ -49,19 +54,15 @@ if (defined('STDIN')) {
     copy('github.png', $export_folder . '/github.png');
     copy('logo.png', $export_folder . '/logo.png');
     copy('favicon.ico', $export_folder . '/favicon.ico');
-    copy('README.md', $export_folder . '/README.md');
 
     $files = array(
       'index.html',
       'click-test.html',
-      'whitelist.html',
-      'start.html',
       'download.html',
       'changelog.html',
       '3.0.html',
       'license.html',
       'script-' . $style_rev . '.js',
-      'CNAME',
       'v' . $last_ver . '/instantclick.js',
       'v' . $last_ver . '/instantclick.min.js',
       'twitter.svg',
@@ -96,9 +97,6 @@ $titles = array(
   'changelog' => 'Changelog - InstantClick',
   '3.0' => 'InstantClick 3.0 Released',
   'license' => 'MIT License - InstantClick',
-
-  'whitelist' => 'InstantClick: Whitelist links',
-  'start' => 'InstantClick: Getting started',
 );
 
 $descriptions = array(
@@ -108,18 +106,12 @@ $descriptions = array(
   'changelog' => 'InstantClick’s progress across versions, release notes.',
   '3.0' => 'Release announcement for InstantClick 3.0: Preloading for mobile devices, progress bar.',
   'license' => 'InstantClick is released under the MIT License.',
-
-  'whitelist' => 'If you need to whitelist links, here’s how.',
-  'start' => 'Get started with InstantClick.',
 );
 ?>
 <!doctype html>
 <meta charset="utf-8">
 <title><?php echo $titles[$page] ?></title>
 <meta name="viewport" content="width=750">
-<?php if ($page == 'whitelist' || $page == 'start'): ?>
-<meta http-equiv="Refresh" content="0; url=download.html">
-<?php endif ?>
 <style><?php echo $style ?></style>
 <meta name="description" content="<?php echo $descriptions[$page] ?>">
 
@@ -148,7 +140,6 @@ if (defined('STDIN')) {
   if ($page == 'welcome') $page = 'index';
   $contents =  ob_get_contents();
   ob_end_clean();
-  touch($export_folder . '/' . $page . '.html');
   file_put_contents($export_folder . '/' . $page . '.html', $contents);
 }
 ?>
