@@ -97,7 +97,7 @@ $titles = array(
   'changelog' => 'Changelog - InstantClick',
   '3.0' => 'InstantClick 3.0 Released',
   'license' => 'MIT License - InstantClick',
-  'github-pages-and-apex-domains' => 'GitHub Pages is slow - InstantClick'
+  'github-pages-and-apex-domains' => 'GitHub Pages is slow with root domains - InstantClick'
 );
 
 $descriptions = array(
