@@ -56,13 +56,15 @@
 
 <h3>The solution</h3>
 
-<p>The short solution is, instead of using <code>yourdomain.com</code>, use <code>www.yourdomain.com</code>. Then, redirect the root domain to the www subdomain using a DNS CNAME record.
+<p>The short solution is, instead of using <code>yourdomain.com</code>, use <code>www.yourdomain.com</code>. <sup id="note-cname-back"><a href="#note-cname">3</a></sup>
 
 <p>If you want to keep your clean www-less domain, you’ll have to move off of GitHub Pages. <a href="https://neocities.org/">Neocities</a> should do the job. If you want your website to be super-fast everywhere on the globe, use <a href="https://www.cloudflare.com/">CloudFlare</a> with its edge caching feature.
 
+<p><em>Update: dknecht on Hacker News <a href="https://news.ycombinator.com/item?id=7738362">points out</a> that CloudFlare can have a <a href="http://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME on the root domain</a>, which should solve GitHub Pages’ performance issues.</em>
+
 <p>Or, if you’re okay paying $8 each month, you could use <a href="http://support.dnsimple.com/articles/github-pages/" title="Pointing your apex domain to GitHub Pages">DNSimple and its ALIAS record</a>.
 
-<p>This website uses a Digital Ocean VPS <sup id="note-digitalocean-back"><a href="#note-digitalocean">3</a></sup> with CloudFlare.
+<p>This website uses a Digital Ocean VPS <sup id="note-digitalocean-back"><a href="#note-digitalocean">4</a></sup> with CloudFlare.
 
 <p>By the way, you should defitively <a href="/">check out InstantClick</a> if you care about web performance.
 
@@ -71,6 +73,7 @@
 <ol id="footnotes">
   <li id="note-analytics">I couldn’t find a way to get this number from Google Analytics directly. The difference with subsequent page load times isn’t counted here, because with InstantClick (<a href="/">check it out</a>) subsequent page loads usually take zero second. <a href="#note-analytics-back" class="noteBack">↩</a>
   <li id="note-cosmopolitan">The 5 top-visiting countries are USA (22%), France (9%), Russia (7%), China (6%) and UK (6%). I’m personally located in France. <a href="#note-cosmopolitan-back" class="noteBack">↩</a>
+  <li id="note-cname">Update: I previously recommended putting a CNAME from the root domain to the www domain here. But as <a>pointed out</a> by pilif on Hacker News that’s not possible. It’s what’s causing the issue with GitHub Pages in the first place actually, <em>duh</em>. <a href="#note-cname-back" class="noteBack">↩</a>
   <li id="note-digitalocean"><a href="https://www.digitalocean.com/?refcode=5fe3cf170a1f" title="Digital Ocean">They</a> offer a coupon code valid through May by the way, DODROPLET will give you $10 of credits. Also valid for existing customers. <a href="#note-digitalocean-back" class="noteBack">↩</a>
 </ol><div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
 <script src="script-6.js" data-no-instant></script>
