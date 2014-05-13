@@ -10,6 +10,7 @@ $pages = array(
   'changelog',
   '3.0',
   'license',
+  'github-pages-and-apex-domains',
 );
 
 $style = file_get_contents('style.css');
@@ -54,6 +55,10 @@ if (defined('STDIN')) {
     copy('github.png', $export_folder . '/github.png');
     copy('logo.png', $export_folder . '/logo.png');
     copy('favicon.ico', $export_folder . '/favicon.ico');
+    copy('scary-analytics.png', $export_folder . '/scary-analytics.png');
+    copy('pages_per_visit_falloff_by_landing_page_speed.jpg', $export_folder . '/pages_per_visit_falloff_by_landing_page_speed.jpg');
+    copy('change_in_bounce_rate_by_landing_page_speed.jpg', $export_folder . '/change_in_bounce_rate_by_landing_page_speed.jpg');
+    copy('302-spam.png', $export_folder . '/302-spam.png');
 
     $files = array(
       'index.html',
@@ -62,6 +67,7 @@ if (defined('STDIN')) {
       'changelog.html',
       '3.0.html',
       'license.html',
+      'github-pages-and-apex-domains.html',
       'script-' . $style_rev . '.js',
       'v' . $last_ver . '/instantclick.js',
       'v' . $last_ver . '/instantclick.min.js',
@@ -91,6 +97,7 @@ $titles = array(
   'changelog' => 'Changelog - InstantClick',
   '3.0' => 'InstantClick 3.0 Released',
   'license' => 'MIT License - InstantClick',
+  'github-pages-and-apex-domains' => 'GitHub Pages is slow - InstantClick'
 );
 
 $descriptions = array(
@@ -100,6 +107,7 @@ $descriptions = array(
   'changelog' => 'InstantClick’s progress across versions, release notes.',
   '3.0' => 'Release announcement for InstantClick 3.0: Preloading for mobile devices, progress bar.',
   'license' => 'InstantClick is released under the MIT License.',
+  'github-pages-and-apex-domains' => 'GitHub Pages with a custom root domain is terribly slow. It will make 35% of your visitors go away.'
 );
 ?>
 <!doctype html>

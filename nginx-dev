@@ -14,10 +14,10 @@ server {
 		return 302 /$1;
 	}
 
-	rewrite ^/output/(changelog|click-test|download|license)$ /../output/$1.html;
+	rewrite ^/output/(changelog|click-test|download|license|github-pages-and-apex-domains)$ /../output/$1.html;
 	rewrite ^/output/(.*)$ /../output/$1;
 
-	rewrite ^/(3\.0|changelog|click-test|download|license)$ /index.php?page=$1;
+	rewrite ^/(3\.0|changelog|click-test|download|license|github-pages-and-apex-domains)$ /index.php?page=$1;
 
 	index index.php index.html index.htm;
 
