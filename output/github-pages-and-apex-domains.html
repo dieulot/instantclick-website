@@ -58,9 +58,9 @@
 
 <p>The short solution is, instead of using <code>yourdomain.com</code>, use <code>www.yourdomain.com</code>. <sup id="note-cname-back"><a href="#note-cname">3</a></sup>
 
-<p>If you want to keep your clean www-less domain, you’ll have to move off of GitHub Pages. <a href="https://neocities.org/">Neocities</a> should do the job. If you want your website to be super-fast everywhere on the globe, use <a href="https://www.cloudflare.com/">CloudFlare</a> with its edge caching feature.
+<p>If you want to keep your clean www-less domain, you’ll have to move off of GitHub Pages, and/or use CloudFlare who can have a <a href="http://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME record on the root domain</a>. The latter has the advantage of making your website super-fast across the globe with its edge caching feature.
 
-<p><em>Update: dknecht on Hacker News <a href="https://news.ycombinator.com/item?id=7738362">points out</a> that CloudFlare can have a <a href="http://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME on the root domain</a>, which should solve GitHub Pages’ performance issues.</em>
+<p><em>Updates: 1. Thanks to Hacker News’s dknecht who <a href="https://news.ycombinator.com/item?id=7738362">pointed out</a> that CloudFlare can have a CNAME record on the root domain, which should solve GitHub Pages’ performance issues. 2. I previously recommended moving to Neocities, but <a href="https://news.ycombinator.com/item?id=7738781">they currently have similar problems</a>. :(</em>
 
 <p>This website uses a Digital Ocean VPS <sup id="note-digitalocean-back"><a href="#note-digitalocean">4</a></sup> with CloudFlare.
 
