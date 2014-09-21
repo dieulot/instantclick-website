@@ -1,5 +1,5 @@
 server {
-	server_name instantclick.io.dev;
+	server_name instantclick.dev instantclick.192.168.1.2.xip.io;
 	root /home/alex/instantclick/instantclick.io;
 
 	location ~ ^/(whitelist|start)\.html$ {
@@ -22,7 +22,7 @@ server {
 }
 
 server {
-	server_name output.instantclick.io.dev;
+	server_name output.instantclick.dev;
 	root /home/alex/instantclick/instantclick.io/output;
 
   location ~ ^/(whitelist|start)\.html$ {
