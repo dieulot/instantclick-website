@@ -21,52 +21,12 @@ $style = str_replace(' {', '{', $style);
 $style = str_replace(';}', '}', $style);
 $style = str_replace(' + ', '+', $style);
 
-if (defined('STDIN')) {
-  if (isset($page)) {
-    ob_start();
-  }
-  else {
-    if (file_exists($export_folder)) {
-      function delTree($dir) {
-        $files = array_diff(scandir($dir), array('.','..'));
-        foreach ($files as $file) {
-          (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
-        }
-        return rmdir($dir);
-      }
-      delTree($export_folder);
-    }
-    mkdir($export_folder);
-    chmod($export_folder, 0777);
-
-    foreach ($pages as $page) {
-      include(__FILE__);
-    }
-
-    copy('script-' . $style_rev . '.js', $export_folder . '/script-' . $style_rev . '.js');
-    if (!file_exists($export_folder . '/v' . $last_ver)) {
-      mkdir($export_folder . '/v' . $last_ver);
-    }
-    copy('v' . $last_ver . '/instantclick.js', $export_folder . '/v' . $last_ver . '/instantclick.js');
-    copy('v' . $last_ver . '/instantclick.min.js', $export_folder . '/v' . $last_ver . '/instantclick.min.js');
-    copy('logo.png', $export_folder . '/logo.png');
-    copy('favicon.ico', $export_folder . '/favicon.ico');
-    copy('scary-analytics.png', $export_folder . '/scary-analytics.png');
-    copy('pages_per_visit_falloff_by_landing_page_speed.jpg', $export_folder . '/pages_per_visit_falloff_by_landing_page_speed.jpg');
-    copy('change_in_bounce_rate_by_landing_page_speed.jpg', $export_folder . '/change_in_bounce_rate_by_landing_page_speed.jpg');
-    copy('302-spam.png', $export_folder . '/302-spam.png');
-
-    exit;
-  }
+$page = isset($_GET['page']) ? substr($_GET['page'], 1) : 'index';
+if (strlen($page) == 0) {
+  $page = 'index';
 }
-else {
-  $page = isset($_GET['page']) ? substr($_GET['page'], 1) : 'index';
-  if (strlen($page) == 0) {
-    $page = 'index';
-  }
-  if (!in_array($page, $pages)) {
-    $page = '404';
-  }
+if (!in_array($page, $pages)) {
+  $page = '404';
 }
 
 if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/' . $export_folder . '/') !== false) {
