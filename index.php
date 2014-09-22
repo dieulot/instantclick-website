@@ -77,7 +77,7 @@ if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
 <? if (isset($page_description)): ?>
 <meta name="description" content="<?= $page_description ?>">
 <? endif ?>
-<? if ($page != '3.0'): ?>
+<? if ($page != '404'): ?>
 <link rel="canonical" href="http://instantclick.io/<? if ($page != 'index') { echo $page; } ?>">
 <? endif ?>
 
