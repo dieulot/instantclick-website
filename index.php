@@ -1,8 +1,4 @@
-<?php
-$style_rev = 6;
-$last_ver = '3.0.1';
-$export_folder = '../output';
-
+<?
 $pages = array(
   'index',
   'download',
@@ -62,13 +58,13 @@ if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
 <title><?= $page_title ?></title>
 <? endif ?>
 <meta name="viewport" content="width=768">
-<style><?php echo $style ?></style>
+<style><?= $style ?></style>
 <? if (isset($page_description)): ?>
 <meta name="description" content="<?= $page_description ?>">
 <? endif ?>
-<?php if ($page != '3.0'): ?>
-<link rel="canonical" href="http://instantclick.io/<?php if ($page != 'index') { echo $page; } ?>">
-<?php endif ?>
+<? if ($page != '3.0'): ?>
+<link rel="canonical" href="http://instantclick.io/<? if ($page != 'index') { echo $page; } ?>">
+<? endif ?>
 
 <header id="header">
   <h1><a href=".">InstantClick</a></h1>
@@ -83,11 +79,4 @@ if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
 <?= $page_content ?>
 </article>
 <div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
-<script src="script-<?php echo $style_rev ?>.js" data-no-instant></script>
-<?php
-if (defined('STDIN')) {
-  $contents =  ob_get_contents();
-  ob_end_clean();
-  file_put_contents($export_folder . '/' . $page . '.html', $contents);
-}
-?>
+<script src="script-6.js" data-no-instant></script>
