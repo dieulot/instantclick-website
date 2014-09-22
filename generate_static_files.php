@@ -15,8 +15,6 @@ function generate($dir) {
     $static_filename = $path_exploded[count($path_exploded) - 1];
     $output_path = 'output/' . $static_filename;
 
-    #copy($path, 'output/' . $final_filename);
-    #$included_
     echo ' Generate ' . $static_filename . PHP_EOL;
     ob_start();
     include('index.php');
