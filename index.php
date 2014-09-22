@@ -1,14 +1,4 @@
 <?
-$pages = array(
-  'index',
-  'download',
-  'click-test',
-  'changelog',
-  '3.0',
-  'license',
-  'github-pages-and-apex-domains',
-);
-
 $style = file_get_contents('style.css');
 $style = preg_replace('#\s*/\*(.+)\*/\s*#', '', $style);
 $style = str_replace(array("\r", "\n", "\t"), '', $style);
@@ -17,19 +7,34 @@ $style = str_replace(' {', '{', $style);
 $style = str_replace(';}', '}', $style);
 $style = str_replace(' + ', '+', $style);
 
+function find_page_in_dir($page, $dir) {
+  $handle = opendir($dir);
+  while ($file = readdir($handle)) {
+    if ($file[0] != '.' && is_dir($dir . '/' . $file)) {
+      $recursive_search = find_page_in_dir($page, $dir . '/' . $file);
+      if ($recursive_search) {
+        return $recursive_search;
+      }
+    }
+    elseif ($file == $page . '.html') {
+      return $dir . '/' . $page . '.html';
+    }
+  }
+  return false;
+}
+
 $page = 'index';
 if (isset($_GET['page']) && strlen($_GET['page']) > 1) {
   $page = substr($_GET['page'], 1); // Starting at offset 1 because 0 is a slash.
 }
-if (!in_array($page, $pages)) {
+$page_path = find_page_in_dir($page, 'pages');
+if (!$page_path) {
   $page = '404';
-}
-
-if ($page == '404') {
+  $page_path = 'pages/404.html';
   header('HTTP/1.1 404 Not Found');
 }
 
-$page_source = $page_content = file_get_contents('pages/' . $page . '.html');
+$page_source = $page_content = file_get_contents($page_path);
 
 if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
   $params = explode("\n", $matches[1]);
