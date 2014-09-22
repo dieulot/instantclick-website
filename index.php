@@ -7,27 +7,37 @@ $style = str_replace(' {', '{', $style);
 $style = str_replace(';}', '}', $style);
 $style = str_replace(' + ', '+', $style);
 
-function find_page_in_dir($page, $dir) {
-  $handle = opendir($dir);
-  while ($file = readdir($handle)) {
-    if ($file[0] != '.' && is_dir($dir . '/' . $file)) {
-      $recursive_search = find_page_in_dir($page, $dir . '/' . $file);
-      if ($recursive_search) {
-        return $recursive_search;
+if (!function_exists('find_page_in_dir')) {
+  function find_page_in_dir($page, $dir) {
+    $handle = opendir($dir);
+    while ($file = readdir($handle)) {
+      if ($file[0] != '.' && is_dir($dir . '/' . $file)) {
+        $recursive_search = find_page_in_dir($page, $dir . '/' . $file);
+        if ($recursive_search) {
+          return $recursive_search;
+        }
+      }
+      elseif ($file == $page . '.html') {
+        return $dir . '/' . $page . '.html';
       }
     }
-    elseif ($file == $page . '.html') {
-      return $dir . '/' . $page . '.html';
-    }
+    return false;
   }
-  return false;
 }
 
 $page = 'index';
+
 if (isset($_GET['page']) && strlen($_GET['page']) > 1) {
   $page = substr($_GET['page'], 1); // Starting at offset 1 because 0 is a slash.
 }
+
+/* When included by generate_static_files.php */
+if (isset($static_filename)) {
+  $page = substr($static_filename, 0, -strlen('.html'));
+}
+
 $page_path = find_page_in_dir($page, 'pages');
+
 if (!$page_path) {
   $page = '404';
   $page_path = 'pages/404.html';
