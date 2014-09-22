@@ -29,11 +29,6 @@ if (!in_array($page, $pages)) {
   $page = '404';
 }
 
-if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/' . $export_folder . '/') !== false) {
-  include($page . '.html');
-  exit;
-}
-
 if ($page == '404') {
   header('HTTP/1.1 404 Not Found');
 }
