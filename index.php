@@ -21,9 +21,9 @@ $style = str_replace(' {', '{', $style);
 $style = str_replace(';}', '}', $style);
 $style = str_replace(' + ', '+', $style);
 
-$page = isset($_GET['page']) ? substr($_GET['page'], 1) : 'index';
-if (strlen($page) == 0) {
-  $page = 'index';
+$page = 'index';
+if (isset($_GET['page']) && strlen($_GET['page']) > 1) {
+  $page = substr($_GET['page'], 1); // Starting at offset 1 because 0 is a slash.
 }
 if (!in_array($page, $pages)) {
   $page = '404';
