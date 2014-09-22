@@ -5,6 +5,8 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 <h2>GitHub Pages with a custom root domain loses you 35% of your visitors</h2>
 
+<p>Update, 22 September 2014: <strong>This is no longer true</strong> since at least August. GitHub has fixed this!
+
 <p>If you have a website on GitHub Pages that sits on a root domain (a domain that isn’t a subdomain), you’re in trouble.
 
 <p>Have you ever noticed how your site loads slowly sometimes? It’s not your connection.
@@ -13,7 +15,7 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 <p>GitHub Pages with a custom domain is <b><em>unbelievably slow</em></b>.
 
-<p><img src="scary-analytics.png" title="Average page load time: 3.49 seconds">
+<p><img src="/images/scary-analytics.png" title="Average page load time: 3.49 seconds">
 
 <p>Visitors to this site’s index page have an average page load time of 3.5 seconds. 70% of those are here for the first time. 3.5 ÷ 70% = 5. So first time visitors have an average page load time of <b>5 seconds</b>. <sup id="note-analytics-back"><a href="#note-analytics">1</a></sup>
 
@@ -22,8 +24,8 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 <p>What do you lose when you add 4 seconds of delay on a first time visit?
 
 <p>
-<a href="pages_per_visit_falloff_by_landing_page_speed.jpg" data-no-instant><img src="pages_per_visit_falloff_by_landing_page_speed.jpg" title="Pages per visit fall-off by landing page speed"  style="width: 250px;"></a>
-<a href="change_in_bounce_rate_by_landing_page_speed.jpg" data-no-instant><img src="change_in_bounce_rate_by_landing_page_speed.jpg" title="Change in bounce rate by landing page speed" style="width: 250px;"></a>
+<a href="/images/pages_per_visit_falloff_by_landing_page_speed.jpg" data-no-instant><img src="/images/pages_per_visit_falloff_by_landing_page_speed.jpg" title="Pages per visit fall-off by landing page speed"  style="width: 250px;"></a>
+<a href="/images/change_in_bounce_rate_by_landing_page_speed.jpg" data-no-instant><img src="/images/change_in_bounce_rate_by_landing_page_speed.jpg" title="Change in bounce rate by landing page speed" style="width: 250px;"></a>
 <small><a href="http://www.webperformancetoday.com/2010/07/01/the-best-graphs-of-velocity/" title="The 16 Best Graphs of Velocity 2010: A snapshot of the current web performance landscape">Source</a></small>
 
 <p>Of the visitors that visit your GitHub Pages site for the first time, 35% more of them won’t bother to open another page. Your bounce rate is doubled.
@@ -34,7 +36,7 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 <p>What I’ve noticed is that sometimes it’s not just a big long redirect but multiple 302 redirects. This behavior isn’t documented anywhere it seems.
 
-<p><a href="302-spam.png" data-no-instant><img src="302-spam.png" style="width: 100%" title="Multiple 302 redirects"></a>
+<p><a href="/images/302-spam.png" data-no-instant><img src="/images/302-spam.png" style="width: 100%" title="Multiple 302 redirects"></a>
 
 <p>5 seconds seems big. When I notice a slow GitHub Pages website the wait seems to be more around 3 seconds, and that’s what I usually see in Chrome’s Network panel. The thing is, InstantClick’s visitors are spread around the world, my guess is this is what tilt the balance. <sup id="note-cosmopolitan-back"><a href="#note-cosmopolitan">2</a></sup>
 
