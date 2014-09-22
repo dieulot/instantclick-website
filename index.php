@@ -34,23 +34,6 @@ if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/' . $exp
   exit;
 }
 
-$titles = array(
-  'download' => 'Download InstantClick',
-  'click-test' => 'Test your click speed - InstantClick',
-  'changelog' => 'Changelog - InstantClick',
-  '3.0' => 'InstantClick 3.0 Released',
-  'github-pages-and-apex-domains' => 'GitHub Pages is slow with root domains - InstantClick',
-  '404' => 'Page not found',
-);
-
-$descriptions = array(
-  'download' => 'Download and get started with InstantClick.',
-  'click-test' => 'Tells you the delay between your hover/mousedown and click.',
-  'changelog' => 'InstantClick’s progress across versions, release notes.',
-  '3.0' => 'Release announcement for InstantClick 3.0: Preloading for mobile devices, progress bar.',
-  'github-pages-and-apex-domains' => 'GitHub Pages with a custom root domain is terribly slow. It will make 35% of your visitors go away.',
-);
-
 if ($page == '404') {
   header('HTTP/1.1 404 Not Found');
 }
