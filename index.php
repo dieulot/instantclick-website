@@ -39,7 +39,6 @@ $titles = array(
   'click-test' => 'Test your click speed - InstantClick',
   'changelog' => 'Changelog - InstantClick',
   '3.0' => 'InstantClick 3.0 Released',
-  'license' => 'MIT License - InstantClick',
   'github-pages-and-apex-domains' => 'GitHub Pages is slow with root domains - InstantClick',
   '404' => 'Page not found',
 );
@@ -49,7 +48,6 @@ $descriptions = array(
   'click-test' => 'Tells you the delay between your hover/mousedown and click.',
   'changelog' => 'InstantClick’s progress across versions, release notes.',
   '3.0' => 'Release announcement for InstantClick 3.0: Preloading for mobile devices, progress bar.',
-  'license' => 'InstantClick is released under the MIT License.',
   'github-pages-and-apex-domains' => 'GitHub Pages with a custom root domain is terribly slow. It will make 35% of your visitors go away.',
 );
 
