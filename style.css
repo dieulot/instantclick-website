@@ -32,7 +32,7 @@ a:visited {
 	margin: 0 auto;
 }
 
-#header h1 {
+#header .logo {
 	margin: 15px 0 5px;
 	background: url('/images/logo.png') left center no-repeat;
 	background-size: contain;
@@ -41,7 +41,7 @@ a:visited {
 	float: left;
 }
 
-#header h1 a {
+#header .logo a {
 	display: block;
 	text-indent: -999em;
 	height: 48px;
@@ -83,12 +83,12 @@ a:visited {
 	clear: both;
 }
 
-h2 {
+h1 {
 	color: #d22;
 	margin-bottom: .56em;
 }
 
-h2:first-child {
+h1:first-child {
 	margin-top: 0;
 }
 

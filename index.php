@@ -82,7 +82,7 @@ if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
 <? endif ?>
 
 <header id="header">
-  <h1><a href=".">InstantClick</a></h1>
+  <div class="logo"><a href=".">InstantClick</a></div>
   <ul>
     <li><a href="/download">Download</a>
     <li><a href="/click-test">Click test</a>
