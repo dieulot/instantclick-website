@@ -55,7 +55,7 @@ if ($page == '404') {
   header('HTTP/1.1 404 Not Found');
 }
 
-$page_source = file_get_contents('pages/' . $page . '.html');
+$page_source = $page_content = file_get_contents('pages/' . $page . '.html');
 
 if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
   $params = explode("\n", $matches[1]);
