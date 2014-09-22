@@ -35,7 +35,6 @@ if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/' . $exp
 }
 
 $titles = array(
-  'index' => 'InstantClick — JS library to make your website instant',
   'download' => 'Download InstantClick',
   'click-test' => 'Test your click speed - InstantClick',
   'changelog' => 'Changelog - InstantClick',
@@ -46,7 +45,6 @@ $titles = array(
 );
 
 $descriptions = array(
-  'index' => 'InstantClick makes following links in your website instant.',
   'download' => 'Download and get started with InstantClick.',
   'click-test' => 'Tells you the delay between your hover/mousedown and click.',
   'changelog' => 'InstantClick’s progress across versions, release notes.',
@@ -58,13 +56,40 @@ $descriptions = array(
 if ($page == '404') {
   header('HTTP/1.1 404 Not Found');
 }
+
+$page_source = file_get_contents('pages/' . $page . '.html');
+
+if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
+  $params = explode("\n", $matches[1]);
+  foreach ($params as $param) {
+    $colon_pos = strpos($param, ':');
+    if (!$colon_pos) {
+      continue;
+    }
+
+    $name = substr($param, 0, $colon_pos);
+    $value = trim(substr($param, $colon_pos + 1));
+
+    if ($name == 'title') {
+      $page_title = $value;
+    }
+    if ($name == 'description') {
+      $page_description = $value;
+    }
+  }
+  $page_content = trim(substr($page_source, strlen($matches[0])));
+}
 ?>
 <!doctype html>
 <meta charset="utf-8">
-<title><?php echo $titles[$page] ?></title>
+<? if (isset($page_title)): ?>
+<title><?= $page_title ?></title>
+<? endif ?>
 <meta name="viewport" content="width=768">
 <style><?php echo $style ?></style>
-<meta name="description" content="<?php echo $descriptions[$page] ?>">
+<? if (isset($page_description)): ?>
+<meta name="description" content="<?= $page_description ?>">
+<? endif ?>
 <?php if ($page != '3.0'): ?>
 <link rel="canonical" href="http://instantclick.io/<?php if ($page != 'index') { echo $page; } ?>">
 <?php endif ?>
@@ -79,7 +104,7 @@ if ($page == '404') {
   <div class="border"></div>
 </header>
 <article class="container">
-<?php include('pages/' . $page . '.html') ?>
+<?= $page_content ?>
 </article>
 <div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
 <script src="script-<?php echo $style_rev ?>.js" data-no-instant></script>
