@@ -3,15 +3,15 @@ title: GitHub Pages is slow with root domains - InstantClick
 description: GitHub Pages with a custom root domain is terribly slow. It will make 35% of your visitors go away.
 ---
 
-<h2>GitHub Pages with a custom root domain loses you 35% of your visitors</h2>
+<h1>GitHub Pages with a custom root domain loses you 35% of your visitors</h1>
 
-<p>Update, 22 September 2014: <strong>This is no longer true</strong> since at least August. GitHub has fixed this!
+<p class="warning">Update: <strong>This is no longer true</strong> since at least August 2014. GitHub fixed this!
 
 <p>If you have a website on GitHub Pages that sits on a root domain (a domain that isn’t a subdomain), you’re in trouble.
 
 <p>Have you ever noticed how your site loads slowly sometimes? It’s not your connection.
 
-<h3>Some scary stats</h3>
+<h2>Some scary stats</h2>
 
 <p>GitHub Pages with a custom domain is <b><em>unbelievably slow</em></b>.
 
@@ -30,7 +30,7 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 <p>Of the visitors that visit your GitHub Pages site for the first time, 35% more of them won’t bother to open another page. Your bounce rate is doubled.
 
-<h3>Where does this problem come from?</h3>
+<h2>Where does this problem come from?</h2>
 
 <p>Anselm Hannemann has <a href="http://helloanselm.com/2014/github-pages-redirect-performance/" title="Analyzing the GitHub Pages Waterfall Chart">a good rundown of the problem</a>, including a note from GitHub support. When a domain has a DNS A record (pointing to GitHub Pages’ IP), GitHub’s DDoS mitigation technology has no alternative than to make a long redirect
 
@@ -42,7 +42,7 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 
 
-<h3>The solution</h3>
+<h2>The solution</h2>
 
 <p>The short solution is, instead of using <code>yourdomain.com</code>, use <code>www.yourdomain.com</code>. <sup id="note-cname-back"><a href="#note-cname">3</a></sup>
 
@@ -54,7 +54,7 @@ description: GitHub Pages with a custom root domain is terribly slow. It will ma
 
 <p>By the way, you should defitively <a href="/">check out InstantClick</a> if you care about web performance.
 
-<h3>Footnotes</h3>
+<h2>Footnotes</h2>
 
 <ol id="footnotes">
   <li id="note-analytics">I couldn’t find a way to get this number from Google Analytics directly. The difference with subsequent page load times isn’t counted here, because with InstantClick (<a href="/">check it out</a>) subsequent page loads usually take zero second. <a href="#note-analytics-back" class="noteBack">↩</a>

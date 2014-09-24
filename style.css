@@ -92,12 +92,13 @@ h1:first-child {
 	margin-top: 0;
 }
 
-h3 {
+h2 {
+	font-size: 1.17em;
 	color: #b11;
 	margin: 1.33em 0 .75em;
 }
 
-.gist + h3 {
+.gist + h2 {
 	margin-top: 1.66em;
 }
 
