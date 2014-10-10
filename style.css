@@ -307,6 +307,26 @@ sup a {
 	margin-left: 10px;
 }
 
+/* PREVIOUS & NEXT IN DOCUMENTATION */
+
+.prev-next .next {
+	float: right;
+}
+
+.prev-next .next:after, .prev-next .prev:before {
+	color: black;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.prev-next .next:after {
+	content: ' >';
+}
+
+.prev-next .prev:before {
+	content: '< ';
+}
+
 /* FOOTER */
 
 #footer {
