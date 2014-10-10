@@ -1,1 +1,95 @@
-Ever get a link that InstantClick shouldn’t load? A script that shouldn’t reexecute on page load?
+---
+title: Blacklisting in InstantClick
+---
+
+<p>Some links need not to be preloaded with InstantClick. Blacklisting allows you to do that.
+
+<h2>What to blacklist</h2>
+
+<p>What to blacklist, and to NOT whitelist:
+
+<ul>
+  <li>Links pointing to an action, such as logout and switching language.
+  <li>Links pointing to non-HTML content that takes a while to load.
+  <li>Links pointing to a page with different styles/scripts in the <code>&lt;head&gt;</code>.
+  <li>Links triggering an action in JavaScript.
+</ul>
+
+<p>Some links are already blacklisted internally, and can’t be whitelisted:
+
+<ul>
+  <li>Links with a <code>target</code> or <code>download</code> attribute.
+  <li>Links with a different domain or protocol.
+  <li>Links pointing to an #anchor on the same page.
+</ul>
+
+<h2>Blacklist a link</h2>
+
+<p>To blacklist a link, add it a <code>data-no-instant</code> attribute.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h2>Blacklist a group of link</h2>
+
+<p>It may sometimes be more convenient to blacklist a group of links, instead of adding <code>data-no-instant</code> attributes to all of them.
+
+<p>To blacklist all links in a parent element, add <code>data-no-instant</code> to that element.
+
+<h2>Whitelist a link or group of links</h2>
+
+<p>If you’ve blacklisted a parent element and would like to whitelist a link (or all the links in a sub-parent), add a <code>data-instant</code> attribute to that link or sub-parent.
+
+<!-- The following paragraph is needed because the last one is a bit hard to grasp. -->
+<p>What’s happening behind the scene is InstantClick go through all the parent elements, from the current link to <code>&lt;html&gt;</code>, if it finds a <code>data-no-instant</code> attribute it considers the link blacklisted and stop looping through the parents. If it finds a <code>data-instant</code> it considers the link whitelisted.
+<!-- OMG it’s really poorly explained -->
+
+<p>If you’d like to blacklist all links by default, and then whitelist links one by one, or whitelist only links in a container, add a <code>data-no-instant</code> attribute to the <code>&lt;body&gt;</code> and a <code>data-instant</code> attribute to the container/links.
+<!-- I haven’t tested, but it should work. -->
+
+<h2>Whitelist mode</h2>
+
+<p class="warning">The following is deprecated and will likely be removed in 4.0. It’s only useful to know if you’re dealing with a website that have it activated (the <code>true</code> argument is passed to <code>InstantClick.init</code>).
+
+<p class="warning">The Correct Way™: If you want to accomplish the same as the whitelist mode, just add <code>data-no-instant</code> to your <code>&lt;body&gt;</code>, as described in “Whitelist a link or group of links”.
+
+<p>The whitelist mode is enabled by passing a <code>true</code> argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+<span class="line-number" rel="file-gistfile1-js-L2">2</span>
+<span class="line-number" rel="file-gistfile1-js-L3">3</span>
+<span class="line-number" rel="file-gistfile1-js-L4">4</span>
+<span class="line-number" rel="file-gistfile1-js-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span></div><div class="line"><span class="cm">/* or */</span></div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span></div><div class="line"><span class="cm">/* or */</span></div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
