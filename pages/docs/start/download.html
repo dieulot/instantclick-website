@@ -1,9 +1,10 @@
 ---
-title: Download InstantClick
-description: Download and get started with InstantClick.
+title: Download InstantClick and get started
 ---
 
-<h1>Download</h1>
+<h1>Get started</h1>
+
+<h2>Download InstantClick</h2>
 
 <p>The latest version is <b>3.0.1</b>, released on 2014/03/21 (<a href="changelog">Changelog</a>).
 
@@ -13,17 +14,40 @@ description: Download and get started with InstantClick.
     <td><a href="v3.0.1/instantclick.js" class="btn" download>Development version<br><small>Full sources, 19.3kb</small></a>
 </table>
 
-<h2>Getting started</h2>
+<p>Or grab <a href="https://github.com/dieulot/instantclick">the latest version on GitHub</a>.
 
-<p>Must read:
+<h2>Initialize InstantClick</h2>
+
+<p>Include InstantClick and initialize it near the end of your pages:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line" id="file-gistfile1-html-LC1">...</div><div class="line" id="file-gistfile1-html-LC2"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;instantclick.min.js&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line" id="file-gistfile1-html-LC3"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div><div class="line"><span class="nt">&lt;/body&gt;</span></div><div class="line"><span class="nt">&lt;/html&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>InstantClick is now activated on your website. Read the remaining articles in this section to get a sufficient level of proficiency with InstantClick:
 
 <ul>
-  <li><a href="/how-it-works">How InstantClick works</a>
-  <li><a href="/preloading">Preloading</a>
-  <li><a href="/blacklisting">Blacklisting (or whitelisting) links</a>
-  <li><a href="/scripts">Events and script re-evaluation</a>
+  <li><a href="/how-it-works">How InstantClick works</a> will give you the correct mental model to deal with InstantClick’s mechanism.
+  <li><a href="/preloading">Preloading</a> will show you the different preloading methods available.
+  <li><a href="/blacklisting">Blacklisting</a> because not all links should be preloaded.
+  <li><a href="/scripts">Events and script re-evaluation</a> will help you make InstantClick play nice with the rest of your JavaScript.
 </ul>
-
-<p>These 4 articles will get you up to speed with how to use InstantClick.
-
-<p>Once you’ve read those, feel free to read the articles in “Go further”. They’ll help you take InstantClick further.
