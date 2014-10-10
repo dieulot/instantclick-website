@@ -1,0 +1,30 @@
+---
+title: How InstantClick works
+---
+
+<h1>How InstantClick works</h1>
+
+<p><small>[This page duplicates the home page a lot, sorry about that, in the future I’ll remove those duplications from the home page and link to this page for more info.]</small>
+
+<p>InstantClick has few differences from traditional web development, but it’s important to know them.
+
+<h2>InstantClick eschews the browser’s page change cycle</h2>
+
+<p>The most important thing to understand is this: <strong>InstantClick technically makes your website a single-page application</strong>; the browser doesn’t change pages anymore, InstantClick does. This implies that:
+
+<ul>
+  <li>You can’t rely on <code>DOMContentLoaded</code> or <code>jQuery.ready()</code> to trigger your code (use <a href="/scripts">InstantClick’s events</a> instead).
+  <li>Third-party scripts that rely on them might need tweaking (see <a href="/scripts">Events and script re-evaluation</a>).
+  <li>The browser doesn’t show its loading indicator on page changes, <a href="/progress-bar">InstantClick shows his</a>.
+</ul>
+
+<p>The second most important thing to understand is that InstantClick only changes the <code>&lt;body&gt;</code> and <code>&lt;title&gt;</code>, so that youn scripts and scripts are evaluated only once (this brings a nice, noticeable speed boost in and of itself).
+
+<p>Here is what all of this implies:
+
+<ul>
+  <li>Your styles and scripts in the <code>&lt;head&gt;</code> should be the same accross the pages where InstantClick is on.
+  <li>If something in your <code>&lt;head&gt;</code> depends on the page’s content (like scripts running on page load or CSS animations), it’ll need a little bit of tweaking.
+</ul>
+
+<p>InstantClick is progressive enhancement: If a visitor’s browser doesn’t support InstantClick your site’s link will work as usual, just without a speed boost.
