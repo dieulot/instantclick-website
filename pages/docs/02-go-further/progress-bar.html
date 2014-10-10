@@ -1,0 +1,61 @@
+---
+title: Customizing the progress bar in InstantClick
+---
+
+<h1>Customizing the progress bar</h1>
+
+<p>The progress bar is a fake progress bar, just there to give your users a sense that something is happening.
+
+<p class="warning">In the future, it should be possible to make the bar show real progress (by looking at the server’s <code>Content-Length</code> header).
+
+<p class="warning">The bar is displayed even if the page has been loaded instantly, in the future this will change. <a href="https://github.com/dieulot/instantclick/issues/58">Discussion on GitHub</a>.
+
+<p>When the visitor zooms on the page or rotates his device, the bar’s size and position automatically adjust, so it works even if your site isn’t optimized for mobile.
+
+<p>By default, the progress bar’s color is <code style="background: #29d">#29d</code>, you can change that with CSS:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-css-L1">1</span>
+<span class="line-number" rel="file-gistfile1-css-L2">2</span>
+<span class="line-number" rel="file-gistfile1-css-L3">3</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nf">#instantclick-bar</span> <span class="p">{</span></div><div class="line">  <span class="k">background</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span></div><div class="line"><span class="p">}</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>You may also make the bar go away:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-css-L1">1</span>
+<span class="line-number" rel="file-gistfile1-css-L2">2</span>
+<span class="line-number" rel="file-gistfile1-css-L3">3</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nf">#instantclick</span> <span class="p">{</span></div><div class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span></div><div class="line"><span class="p">}</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p class="warning">The way to make the bar go away isn’t optimal. In a later version of InstantClick it will be possible to not have it run by passing an argument to <code>InstantClick.init</code>.
