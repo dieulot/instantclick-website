@@ -1,0 +1,98 @@
+---
+title: Events and script re-evaluation in InstantClick
+---
+
+<h1>Events and script re-evaluation</h1>
+
+<p>InstantClick technically makes your website a single-page application, so there’s no <code>DOMContentLoaded</code> firing on page changes anymore. Because of this, other scripts might need to be tweaked to work correctly with InstantClick.
+
+<p>InstantClick fires four events to provide hooks into the lifecycle of the page:
+
+<ul>
+  <li><p><code>change</code> : The page is changed, also triggered on initial page load and if InstantClick is not supported. Replaces <code>DOMContentLoaded</code>.
+
+  <p>Its callback can take an optional <code>isInitialLoad</code> argument, it’s a boolean that will be <code>true</code> when it’s the initial page change or when InstantClick isn’t supported, and <code>false</code> when InstantClick changes the page.
+  <li><p><code>fetch</code> : A page starts preloading.
+  <li><p><code>receive</code> : A page has been preloaded.
+  <li><p><code>wait</code> : The user has clicked on a link, but the page isn’t preloaded yet. Only triggers when the page isn’t displayed instantly.
+</ul>
+
+<p>To listen to an event, for example <code>change</code>, use <code>InstantClick.on</code>:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">'change'</span><span class="p">,</span> <span class="nx">yourCallback</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>You’ll want to call <code>InstantClick.on</code> before <code>InstantClick.init</code>, because the <code>change</code> event is triggered on initial page load too, including when the browser doesn’t support pushState.
+
+<hr>
+
+<p>If you have a script in the <code>&lt;body&gt;</code> that you wish not to re-evaluate when InstantClick displays a page, add it a <code>data-no-instant</code> attribute.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;I’m only run once.&quot;</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>If other scripts conflict with InstantClick, it’s advised to add a <code>data-no-instant</code> attribute to all of them, then to remove each attribute one by one until you find the culprit. You might get an idea on how to solve compatibility problems by checking examples (in CoffeeScript) on the <a href="http://reed.github.io/turbolinks-compatibility/">Turbolinks Compatibility</a> site.
+
+<hr>
+
+<p>For an example, here’s how to make Google Analytics (late 2013 code) work:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+<span class="line-number" rel="file-gistfile1-html-L6">6</span>
+<span class="line-number" rel="file-gistfile1-html-L7">7</span>
+<span class="line-number" rel="file-gistfile1-html-L8">8</span>
+<span class="line-number" rel="file-gistfile1-html-L9">9</span>
+<span class="line-number" rel="file-gistfile1-html-L10">10</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;instantclick.min.js&quot;</span> <span class="na">data-no-instant</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-no-instant</span><span class="nt">&gt;</span></div><div class="line"><span class="cm">/* Google Analytics code here, without ga(&#39;send&#39;, &#39;pageview&#39;) */</span></div><div class="line">&nbsp;</div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></div><div class="line">  <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;pageview&#39;</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span></div><div class="line"><span class="p">});</span></div><div class="line">&nbsp;</div><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span></div><div class="line"><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
