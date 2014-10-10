@@ -1,0 +1,87 @@
+---
+title: InstantClick’s preloading
+---
+
+<h1>Preloading</h1>
+
+<p>InstantClick has different options for preloading, use one or the other depending on what your server will allow.
+
+<p>In any case, not recalculating scripts and styles on every page change will already make your pages up to twice as fast (<a href="https://github.com/rails/turbolinks#how-much-faster-is-it-really">measured with Turbolinks</a>, another project using this technique).
+
+<h2 id="mouseover">Default: on mouseover (hover)</h2>
+
+<p>Preloading kicks in when a user hovers over a link. If the user has a decent connection and your pages don’t take too long to be served, pages will display instantly.
+
+<p>Just initialize InstantClick as described in <a href="/download">Get started</a> and you’re set.
+
+<h2 id="mousedown">With no additional load on the server: on mousedown</h2>
+
+<p>Preload when the user presses his mouse button (the click happens on release). This brings nearly zero overhead to your server and still bring a “magical” speed boost.
+
+<p>To use, pass <code>'mousedown'</code> as an argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h2 id="delay">Between the two: on mouseover with a delay</h2>
+
+<p>If the user is still hovering over a link after a delay of your choice has passed, the page will start preloading.
+
+<p>Recommended delays are 100 ms and 50 ms. More than 100 ms may actually be worse than on mousedown (below), less than 50 ms likely won’t be perceptible.
+
+<p>To make InstantClick preload after a delay, pass the delay in milliseconds as an argument to <code>InstantClick.init</code>.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nx">InstantClick</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<h2 id="on-mobile">What about mobile</h2>
+
+<p>With any of these options, preloading starts when the visitor’s finger touch the link (touchstart).
+
+<p>If your site is optimized for mobile (device width viewport on Android, using <a href="https://github.com/ftlabs/fastclick">FastClick</a> on iOS), the “click” happens when the visitor releases his finger from the link, giving approximately 100 ms of delay for preloading.
+
+<p>If your site isn’t optimized for mobiles, it depends on the OS. Android gives 300 ms, iOS gives 450 ms.
+
+<p>A 3G request on the same site usually takes about 200 ms.
+
+<h2>Which one to choose</h2>
+
+<p>If your site can handle the additional load, preload on mouseover.
+
+<p>If your site likely can’t, preload on mousedown. Your site will still be faster than 99% of websites anyway.
+
+<p>If you’d like to determine if your server can, start with mousedown which will put virtually zero additional stress on your server. Then use mouseover with a 100 ms delay. Then with a 50 ms delay (or go by smaller decrements, if you’re patient). Then with mouseover directly.
+
+<p>If server-side analytics are important you are limited to mousedown, as using anything else would skew the data.
