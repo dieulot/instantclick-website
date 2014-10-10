@@ -91,7 +91,7 @@ if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
   <div class="border"></div>
 </header>
 <article class="container">
-<?= $page_content ?>
+<? eval('?>' . $page_content) ?>
 </article>
 <div id="footer">InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot</div>
 <script src="script-6.js" data-no-instant></script>
