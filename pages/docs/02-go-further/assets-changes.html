@@ -1,0 +1,78 @@
+---
+title: Tracking assets changes in InstantClick
+---
+
+<h1>Tracking assets changes</h1>
+
+<p class="warning">The current way of tracking asset changes is currently a bit clumsy. It will probably be changed later in InstantClick 4.0.
+
+<p>To check when a stylesheet or script (either external or inline) is updated, add it a <code>data-instant-track</code> attribute:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+<span class="line-number" rel="file-gistfile1-html-L3">3</span>
+<span class="line-number" rel="file-gistfile1-html-L4">4</span>
+<span class="line-number" rel="file-gistfile1-html-L5">5</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;script.js&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line">&nbsp;</div><div class="line"><span class="nt">&lt;style </span><span class="na">data-instant-track</span><span class="nt">&gt;body</span> <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="nb">aliceblue</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-instant-track</span><span class="nt">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">timingStart</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>InstantClick will check for changes in the <code>href</code> or <code>src</code> attributes if they exist. To indicate that a file is updated, modify its attribute:
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css?20140308&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;script.js?20140308&quot;</span> <span class="na">data-instant-track</span><span class="nt">&gt;&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>If it’s an inline script or style, InstantClick will check for a change in the element’s content.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-html-L1">1</span>
+<span class="line-number" rel="file-gistfile1-html-L2">2</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line"><span class="nt">&lt;style </span><span class="na">data-instant-track</span><span class="nt">&gt;body</span> <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="nb">midnightblue</span><span class="p">;</span> <span class="k">font</span><span class="o">:</span> <span class="m">13px</span> <span class="n">Helvetica</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span></div><div class="line"><span class="nt">&lt;script </span><span class="na">data-instant-track</span><span class="nt">&gt;</span><span class="kd">var</span> <span class="nx">timingStart</span> <span class="o">=</span> <span class="nx">performance</span> <span class="o">&amp;&amp;</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span></div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>When any change is detected, InstantClick will reload the page, thus making the browser re-evaluate all scripts and styles.
