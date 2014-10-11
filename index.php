@@ -122,7 +122,6 @@ extract(parse_page($page_path));
   <ul>
     <li><a href="/documentation">Documentation</a>
     <li><a href="/click-test">Click test</a>
-    <li><a href="/blog">Blog</a>
   </ul>
   <div class="border"></div>
 </header>
