@@ -4,19 +4,18 @@ title: InstantClick’s documentation
 
 <h1>Documentation</h1>
 
-<h2>Getting started</h2>
+<? require_once('includes/documentation_order.php') ?>
 
-<ul>
-  <li><a href="/download">Get started / Download</a> ← Start here
-  <li><a href="/how-it-works">How InstantClick works</a>
-  <li><a href="/preloading">Preloading</a>
-  <li><a href="/blacklisting">Blacklisting</a>
-  <li><a href="/scripts">Events and script re-evaluation</a>
-</ul>
+<? foreach ($documentation_order as $title => $chapters): ?>
+  <h2><?= $title ?></h2>
 
-<h2>Go further</h2>
-
-<ul>
-  <li><a href="/assets-changes">Tracking assets changes</a>
-  <li><a href="/progress-bar">Customizing the progress bar</a>
-</ul>
+  <ul>
+<? foreach ($chapters as $chapter): ?>
+    <li>
+      <a href="/<?= $chapter ?>"><?= get_page_h1($chapter) ?></a>
+<? if ($chapter == 'download'): ?>
+      ← Start here
+<? endif ?>
+<? endforeach ?>
+  </ul>
+<? endforeach ?>
