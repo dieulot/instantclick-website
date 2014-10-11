@@ -105,6 +105,11 @@ h2 {
 	margin-top: 1.66em;
 }
 
+h3 {
+	color: #900;
+	margin: 1.33em 0 .75em;
+}
+
 h4 {
 	color: #900;
 	margin: 1em 0 .66em;
@@ -307,7 +312,7 @@ sup a {
 	margin-left: 10px;
 }
 
-/* PREVIOUS & NEXT IN DOCUMENTATION */
+/* NAVIGATION IN DOCUMENTATION */
 
 .prev-next .next {
 	float: right;
@@ -325,6 +330,32 @@ sup a {
 
 .prev-next .prev:before {
 	content: '< ';
+}
+
+.toc {
+	border-top: 1px solid #ddf;
+	clear: both;
+	margin-top: 1em;
+}
+
+.toc h3, .toc h4 {
+	color: black;
+}
+
+.toc a {
+	text-decoration: none;
+}
+
+.toc h3 {
+	margin-top: .75em;
+}
+
+.toc .chapters {
+	-webkit-column-count: 2;
+}
+
+.toc .chapters li {
+	list-style: none;
 }
 
 /* FOOTER */

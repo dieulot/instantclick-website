@@ -25,6 +25,63 @@ if (!function_exists('find_page_in_dir')) {
   }
 }
 
+if (!function_exists('parse_page')) {
+  function parse_page($page_path) {
+    $page_source = file_get_contents($page_path);
+    $return = [
+      'page_content' => $page_source,
+    ];
+
+    if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
+      $params = explode("\n", $matches[1]);
+      foreach ($params as $param) {
+        $colon_pos = strpos($param, ':');
+        if (!$colon_pos) {
+          continue;
+        }
+
+        $name = substr($param, 0, $colon_pos);
+        $value = trim(substr($param, $colon_pos + 1));
+
+        $return['page_' . $name] = $value;
+      }
+      $return['page_content'] = trim(substr($page_source, strlen($matches[0])));
+    }
+
+    if (preg_match('#<h1>(.*)</h1>#i', $page_source, $matches)) {
+      $return['page_h1'] = $matches[1];
+    }
+
+    return $return;
+  }
+}
+
+if (!function_exists('get_page_h1')) {
+  $page_h1s = [];
+
+  function get_page_h1($page) {
+    global $page_h1s;
+
+    if (isset($page_h1s[$page])) {
+      return $page_h1s[$page];
+    }
+
+    $page_path = find_page_in_dir($page, 'pages');
+
+    if (!$page_path) {
+      return $page_h1s[$page] = '(no page)';
+    }
+
+    extract(parse_page($page_path));
+
+    if (!isset($page_h1)) {
+      return $page_h1s[$page] = '(no title)';
+    }
+
+    return $page_h1s[$page] = $page_h1;
+  }
+}
+
 $page = 'index';
 
 if (isset($_GET['page']) && strlen($_GET['page']) > 1) {
@@ -44,28 +101,7 @@ if (!$page_path) {
   header('HTTP/1.1 404 Not Found');
 }
 
-$page_source = $page_content = file_get_contents($page_path);
-
-if (preg_match('#^---(.+)---#s', $page_source, $matches)) {
-  $params = explode("\n", $matches[1]);
-  foreach ($params as $param) {
-    $colon_pos = strpos($param, ':');
-    if (!$colon_pos) {
-      continue;
-    }
-
-    $name = substr($param, 0, $colon_pos);
-    $value = trim(substr($param, $colon_pos + 1));
-
-    if ($name == 'title') {
-      $page_title = $value;
-    }
-    if ($name == 'description') {
-      $page_description = $value;
-    }
-  }
-  $page_content = trim(substr($page_source, strlen($matches[0])));
-}
+extract(parse_page($page_path));
 ?>
 <!doctype html>
 <meta charset="utf-8">
