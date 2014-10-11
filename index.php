@@ -118,7 +118,7 @@ extract(parse_page($page_path));
 <? endif ?>
 
 <header id="header">
-  <div class="logo"><a href=".">InstantClick</a></div>
+  <div class="logo"><a href="/">InstantClick</a></div>
   <ul>
     <li><a href="/documentation">Documentation</a>
     <li><a href="/click-test">Click test</a>
