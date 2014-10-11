@@ -75,7 +75,7 @@ a:visited {
 /* CONTENT */
 
 .container {
-	background: rgba(255,255,255,.8);
+	background: #fffcfc;
 	padding: 20px 30px;
 	margin: 1em auto;
 	border-radius: 15px;
