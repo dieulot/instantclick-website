@@ -12,3 +12,8 @@ server {
 
   error_page 404 404.html;
 }
+
+server {
+  server_name www.instantclick.io;
+  return 301 $scheme://instantclick.io$request_uri;
+}
