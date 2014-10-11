@@ -1,5 +1,3 @@
-**This new website isn’t yet active, it should be in about two hours.**
-
 This is the code that generates http://instantclick.io/, which is made of static files.
 
 It has two parts:
