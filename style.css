@@ -35,18 +35,16 @@ a:visited {
 }
 
 #header .logo {
-	margin: 15px 0 5px;
-	background: url('/images/logo.png') left center no-repeat;
-	background-size: contain;
-	width: 220px;
-	height: 48px;
+	margin-top: 10px;
 	float: left;
 }
 
 #header .logo a {
-	display: block;
-	text-indent: -999em;
-	height: 48px;
+	font-family: Avenir, Calibri, sans-serif;
+	font-weight: 600;
+	font-size: 40px;
+	color: #d22;
+	text-decoration: none;
 }
 
 #header ul {
