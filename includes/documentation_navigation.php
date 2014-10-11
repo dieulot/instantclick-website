@@ -1,5 +1,5 @@
 <?
-require_once('documentation_order.php');
+require('documentation_order.php');
 
 /* Find previous and next chapter */
 
