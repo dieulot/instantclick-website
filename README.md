@@ -17,3 +17,5 @@ You’ll need PHP 5.4 and nginx to run the preview app, you’ll need PHP 5.4 to
 To keep a consistent tone I’ll end up editing most contributions. This means that for anything related to the copy you should open an issue, and not a pull request. You’ll then be credited in the commit message.
 
 I’m not a native English speaker, so if anything sounds weird, please tell me!
+
+I’m also not a crackerjack back-end developer either, so if you spot anything that would make the code simpler to use/maintain, advice or pull requests are appreciated.
