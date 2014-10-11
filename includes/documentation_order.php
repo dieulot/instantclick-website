@@ -14,4 +14,7 @@ $documentation_order = [
     'assets-changes',
     'progress-bar',
   ],
+  'Meta' => [
+    'changelog',
+  ],
 ];
