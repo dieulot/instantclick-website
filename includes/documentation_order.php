@@ -15,6 +15,7 @@ $documentation_order = [
     'progress-bar',
   ],
   'Meta' => [
+    'roadmap',
     'changelog',
   ],
 ];

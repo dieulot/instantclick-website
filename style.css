@@ -146,6 +146,10 @@ p + ul, p + ol {
 	margin-top: -.75em;
 }
 
+.spacious li + li {
+	margin-top: .8em;
+}
+
 hr {
 	border: none;
 	text-align: center;

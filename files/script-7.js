@@ -21,9 +21,10 @@ ga('create', 'UA-46962315-1', 'instantclick.io');
 
 InstantClick.on('change', function() {
 	ga('send', 'pageview', location.pathname + location.search);
-	var emails = document.querySelectorAll('a[data-no-instant=email]')
+	var emails = document.querySelectorAll('a[data-email]')
 	for (var i = 0; i < emails.length; i++) {
 		emails[i].href = 'mailto:' + ['adieulot', 'gmail.com'].join('@')
+    emails[i].innerHTML = ['adieulot', 'gmail.com'].join('@')
 	}
 })
 

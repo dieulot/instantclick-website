@@ -1,0 +1,47 @@
+---
+title: InstantClick’s roadmap
+---
+
+<h1>Roadmap</h1>
+
+<p>As you may have noticed, InstantClick’s development has been stagnating HARD in the last six months. It’s because the docs needed an overhaul, and I thought I needed to tackle all the design decisions for the next version of InstantClick.
+
+<p>The new docs are there. For design decisions, I’ll tackle them one by one and not all at once. The project should get moving again.
+
+<h2>Bugs</h2>
+
+<p>InstantClick 3.1 should be focused on bugfixes. There are <a href="https://github.com/dieulot/instantclick/labels/Bug">quite a few of them</a>, and those that break normal browser behaviors aren’t acceptable.
+
+<p>There’s also surely other bugs that haven’t been reported in InstantClick yet. Wading through <a href="https://github.com/defunkt/jquery-pjax/issues">pjax’s</a> and <a href="https://github.com/rails/turbolinks/issues">Turbolinks’s issues</a> should uncover them. That’s maybe not for 3.1 though.
+
+<h2>Miscellaneous</h2>
+
+<ul class="spacious">
+  <li>The most needed feature is to allow preloading on links added by JavaScript. <a href="https://github.com/dieulot/instantclick/issues/41">#41</a>
+  <li>Add more <a href="/scripts">events</a>.
+  <li>Decoupling the progress bar from InstantClick’s core, so that there isn’t useless code lying around for those that wish to use another progress indicator. It will also insure that the included progress bar doesn’t get unfair advantages over custom loading indicator, as is the case now.
+  <li>Make the progress bar appear only after the user sees a page loading for 80–100 ms. <a href="https://github.com/dieulot/instantclick/issues/58">#58</a>
+  <li>Make the progress bar show real progress, if the <code>Content-Length</code> header is available. And tell how to activate this header with PHP.
+  <li>
+  <ul class="spacious">
+    <li>Send a header with InstantClick’s requests. <a href="https://github.com/dieulot/instantclick/issues/71">#71</a>
+      <br>This would bring <em>very</em> interesting possibilities, such as inlining CSS in the HTML so that serving your website takes only one HTTP request.
+    <li>Allow to use any element as the container, so you can send just that part to requests made with InstantClick and thus avoid wasting server ressources.
+    <li>Make it work with forms (pjax, not preloading). For now it’s not a priority, but it will be needed for that previous thing about inlining CSS. <a href="https://github.com/dieulot/instantclick/issues/74">#74</a>
+  </ul>
+  <li>Remove whitelist mode and make a better assets change tracking system. Those two got bad design decisions. Probably for 4.0.
+  <li>A page of documentation about caching. Caching is the most requested feature in InstantClick, yet browsers already have all that is needed for caching, and it works great with InstantClick.
+</ul>
+
+<h2>On the project</h2>
+
+<ul class="spacious">
+  <li>A list of fixes for third-party scripts with InstantClick, much like <a href="http://reed.github.io/turbolinks-compatibility/">Turbolinks Compatibility</a>, is badly needed.
+  <li>An Expo/showcase of sites using InstantClick would be great, because it’s not really if and how much InstantClick is used in the wild; even I don’t track that much. You know what? If you’d like to be in the expo, start sending your site’s URL now to <a href="#adieulot à gmail , com" data-email>adieulot à gmail , com</a>.
+  <li>As a maintainer of an OSS project, I have no idea what I’m doing. I need to progressively get better at it (<a href="http://producingoss.com/">POSS</a> is a good ressource). The most pressing thing is to learn how to coordinate different development efforts at the same time, for now it’s been pretty much just me developing in the <code>master</code> branch.
+  <li>A forum for getting help with InstantClick.
+</ul>
+
+<p>Nothing on this page is set in stone, if you have feature or design requests you’re invited to <a href="https://github.com/dieulot/instantclick/issues">discuss them on GitHub</a>.
+
+<? include('includes/documentation_navigation.php') ?>
