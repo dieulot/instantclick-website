@@ -361,7 +361,7 @@ sup a {
 /* FOOTER */
 
 #footer {
-	margin: 2em auto 1em;
+	margin: auto;
 	font-size: .83em;
 	text-align: center;
 	color: #222;
