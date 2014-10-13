@@ -316,6 +316,10 @@ sup a {
 
 /* NAVIGATION IN DOCUMENTATION */
 
+.prev-next {
+	margin-top: 1.5em;
+}
+
 .prev-next .next {
 	float: right;
 }
