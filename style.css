@@ -75,12 +75,13 @@ a:visited {
 /* CONTENT */
 
 .container {
-	background: #fffcfc;
+	background: white;
 	padding: 20px 30px;
 	margin: 1em auto;
 	border-radius: 15px;
 	width: 600px;
 	clear: both;
+	color: #111;
 }
 
 h1 {
