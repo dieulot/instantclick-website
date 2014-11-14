@@ -107,6 +107,7 @@ h2 {
 h3 {
 	color: #900;
 	margin: 1.33em 0 .75em;
+	font-size: 1.1em;
 }
 
 h4 {
@@ -355,6 +356,7 @@ sup a {
 
 .toc h3 {
 	margin-top: .75em;
+	font-size: 1.17em;
 }
 
 .toc .chapters {
