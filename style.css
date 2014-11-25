@@ -32,6 +32,7 @@ a:visited {
 #header {
 	max-width: 660px;
 	margin: 0 auto;
+	overflow: auto;
 }
 
 #header .logo {
@@ -67,17 +68,12 @@ a:visited {
 	display: block;
 }
 
-.border {
-	clear: both;
-	border-bottom: 1px solid #ccd;
-}
-
 /* CONTENT */
 
 .container {
 	background: white;
 	padding: 20px 30px;
-	margin: 1em auto;
+	margin: .5em auto 1em;
 	border-radius: 8px;
 	width: 600px;
 	clear: both;

@@ -124,7 +124,6 @@ extract(parse_page($page_path));
     <li><a href="/documentation">Documentation</a>
     <li><a href="/click-test">Click test</a>
   </ul>
-  <div class="border"></div>
 </header>
 <article class="container">
 <? eval('?>' . $page_content) ?>
