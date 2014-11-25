@@ -67,7 +67,7 @@ if (!function_exists('get_page_h1')) {
       return $page_h1s[$page];
     }
 
-    $page_path = find_page_path($page, 'pages');
+    $page_path = find_page_path($page);
 
     if (!$page_path) {
       return $page_h1s[$page] = '(no page)';
@@ -94,7 +94,7 @@ if (isset($static_filename)) {
   $page = substr($static_filename, 0, -strlen('.html'));
 }
 
-$page_path = find_page_path($page, 'pages');
+$page_path = find_page_path($page);
 
 if (!$page_path) {
   $page = '404';
