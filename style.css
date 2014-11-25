@@ -82,6 +82,7 @@ a:visited {
 	width: 600px;
 	clear: both;
 	color: #111;
+	border: 1px solid rgba(0,0,0,.125);
 }
 
 h1 {
