@@ -1,4 +1,5 @@
 <?
+/* This minifies CSS surprisingly well. */
 $style = file_get_contents('style.css');
 $style = preg_replace('#\s*/\*(.+)\*/\s*#', '', $style);
 $style = str_replace(array("\r", "\n", "\t"), '', $style);
