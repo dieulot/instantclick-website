@@ -8,17 +8,17 @@ $style = str_replace(' {', '{', $style);
 $style = str_replace(';}', '}', $style);
 $style = str_replace(' + ', '+', $style);
 
-if (!function_exists('find_page_in_dir')) {
-  function find_page_in_dir($page, $dir) {
+if (!function_exists('find_page_path')) {
+  function find_page_path($page, $dir = 'pages') {
     $handle = opendir($dir);
-    while ($file = readdir($handle)) {
-      if ($file[0] != '.' && is_dir($dir . '/' . $file)) {
-        $recursive_search = find_page_in_dir($page, $dir . '/' . $file);
+    while (($entry = readdir($handle)) !== false) {
+      if ($entry[0] != '.' && is_dir($dir . '/' . $entry)) {
+        $recursive_search = find_page_path($page, $dir . '/' . $entry);
         if ($recursive_search) {
           return $recursive_search;
         }
       }
-      elseif ($file == $page . '.html') {
+      elseif ($entry == $page . '.html') {
         return $dir . '/' . $page . '.html';
       }
     }
@@ -67,7 +67,7 @@ if (!function_exists('get_page_h1')) {
       return $page_h1s[$page];
     }
 
-    $page_path = find_page_in_dir($page, 'pages');
+    $page_path = find_page_path($page, 'pages');
 
     if (!$page_path) {
       return $page_h1s[$page] = '(no page)';
@@ -94,7 +94,7 @@ if (isset($static_filename)) {
   $page = substr($static_filename, 0, -strlen('.html'));
 }
 
-$page_path = find_page_in_dir($page, 'pages');
+$page_path = find_page_path($page, 'pages');
 
 if (!$page_path) {
   $page = '404';
