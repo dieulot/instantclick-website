@@ -130,6 +130,6 @@ extract(parse_page($page_path));
 </article>
 <div id="footer">
   <p>InstantClick is released under the <a href="license">MIT License</a>, © 2014 Alexandre Dieulot
-  <p>You can <a href="https://github.com/dieulot/instantclick.io">participate to this site</a> on GitHub.
+  <p>You can <a href="https://github.com/dieulot/instantclick-website">participate to this site</a> on GitHub.
 </div>
 <script src="script-7.js" data-no-instant></script>
