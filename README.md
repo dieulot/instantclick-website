@@ -10,7 +10,7 @@ To generate static files, type `make` into a terminal.
 
 You’ll need PHP 5.4 and nginx to run the preview app, you’ll need PHP 5.4 to generate the static files.
 
-The content (HTML) is in `pages/`. It’s organized by folders, those folders aren’t visible in the URL when visiting the site.
+The content (HTML) is in `pages/`. It’s organized by folders on disk but those folders’ names aren’t visible in the URL when visiting the site.
 
 ## Deploying with Git
 
