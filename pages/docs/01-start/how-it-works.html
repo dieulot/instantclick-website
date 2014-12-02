@@ -4,7 +4,7 @@ title: How InstantClick works
 
 <h1>How InstantClick works</h1>
 
-<p>[This page duplicates the home page a lot, sorry about that, in the future I’ll remove those duplications from the home page and link to this page for more info.]
+<p>[This page duplicates the home page a lot, sorry about that; in the future I’ll remove those duplications from the home page and link to this page for more info.]
 
 <p>InstantClick has few differences from traditional web development, but it’s important to know them.
 
@@ -18,12 +18,12 @@ title: How InstantClick works
   <li>The browser doesn’t show its loading indicator on page changes, <a href="/progress-bar">InstantClick shows his</a>.
 </ul>
 
-<p>The second most important thing to understand is that InstantClick only changes the <code>&lt;body&gt;</code> and <code>&lt;title&gt;</code>, so that youn scripts and scripts are evaluated only once (this brings a nice, noticeable speed boost in and of itself).
+<p>The second most important thing to understand is that InstantClick only changes the <code>&lt;body&gt;</code> and <code>&lt;title&gt;</code>, so that your scripts and scripts are evaluated only once (this brings a nice, noticeable speed boost in and of itself).
 
 <p>Here is what all of this implies:
 
 <ul>
-  <li>Your styles and scripts in the <code>&lt;head&gt;</code> should be the same accross the pages where InstantClick is on.
+  <li>Your styles and scripts in the <code>&lt;head&gt;</code> should be the same across the pages where InstantClick is on.
   <li>If something in your <code>&lt;head&gt;</code> depends on the page’s content (like scripts running on page load or CSS animations), it’ll need a little bit of tweaking.
 </ul>
 

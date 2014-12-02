@@ -11,7 +11,7 @@ title: Events and script re-evaluation in InstantClick
 <ul>
   <li><p><code>change</code> : The page is changed, also triggered on initial page load and if InstantClick is not supported. Replaces <code>DOMContentLoaded</code>.
 
-  <p>Its callback can take an optional <code>isInitialLoad</code> argument, it’s a boolean that will be <code>true</code> when it’s the initial page change or when InstantClick isn’t supported, and <code>false</code> when InstantClick changes the page.
+  <p>Its callback can take an optional <code>isInitialLoad</code> argument, it’s a Boolean that will be <code>true</code> when it’s the initial page change or when InstantClick isn’t supported, and <code>false</code> when InstantClick changes the page.
   <li><p><code>fetch</code> : A page starts preloading.
   <li><p><code>receive</code> : A page has been preloaded.
   <li><p><code>wait</code> : The user has clicked on a link, but the page isn’t preloaded yet. Only triggers when the page isn’t displayed instantly.
