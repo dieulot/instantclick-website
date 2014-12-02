@@ -196,6 +196,11 @@ hr:after {
 	padding: .17em .66em;
 }
 
+.notice {
+	color: #333;
+	font-size: 16px;
+}
+
 /* BUTTONS */
 
 .btn {
