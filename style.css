@@ -141,6 +141,11 @@ h2 + p, h3 + p, h4 + p {
 	margin-bottom: -5px;
 }
 
+.latest-version {
+	text-align: center;
+	font-size: .9em;
+}
+
 p + ul, p + ol {
 	margin-top: -.75em;
 }
