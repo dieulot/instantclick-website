@@ -1,12 +1,14 @@
-/* InstantClick 3.0.1 | (C) 2014 Alexandre Dieulot | http://instantclick.io/license.html */
+/* InstantClick 3.1.0 | (C) 2014 Alexandre Dieulot | http://instantclick.io/license */
 
 var InstantClick = function(document, location) {
   // Internal variables
   var $ua = navigator.userAgent,
+      $isChromeForIOS = $ua.indexOf(' CriOS/') > -1,
       $hasTouch = 'createTouch' in document,
       $currentLocationWithoutHash,
       $urlToPreload,
       $preloadTimer,
+      $lastTouchTimestamp,
 
   // Preloading-related variables
       $history = {},
@@ -44,7 +46,7 @@ var InstantClick = function(document, location) {
   }
 
   function getLinkTarget(target) {
-    while (target.nodeName != 'A') {
+    while (target && target.nodeName != 'A') {
       target = target.parentNode
     }
     return target
@@ -82,17 +84,48 @@ var InstantClick = function(document, location) {
     return false
   }
 
-  function triggerPageEvent(eventType, arg1) {
-    for (var i = 0; i < $eventsCallbacks[eventType].length; i++) {
-      $eventsCallbacks[eventType][i](arg1)
-    }
+  function isPreloadable(a) {
+    var domain = location.protocol + '//' + location.host
 
-    /* The `change` event takes one boolean argument: "isInitialLoad" */
+    if (a.target // target="_blank" etc.
+        || a.hasAttribute('download')
+        || a.href.indexOf(domain + '/') != 0 // Another domain, or no href attribute
+        || (a.href.indexOf('#') > -1
+            && removeHash(a.href) == $currentLocationWithoutHash) // Anchor
+        || ($useWhitelist
+            ? !isWhitelisted(a)
+            : isBlacklisted(a))
+       ) {
+      return false
+    }
+    return true
+  }
+
+  function triggerPageEvent(eventType, arg1, arg2, arg3) {
+    var returnValue = false
+    for (var i = 0; i < $eventsCallbacks[eventType].length; i++) {
+      if (eventType == 'receive') {
+        var altered = $eventsCallbacks[eventType][i](arg1, arg2, arg3)
+        if (altered) {
+          /* Update args for the next iteration of the loop. */
+          if ('body' in altered) {
+            arg2 = altered.body
+          }
+          if ('title' in altered) {
+            arg3 = altered.title
+          }
+
+          returnValue = altered
+        }
+      }
+      else {
+        $eventsCallbacks[eventType][i](arg1, arg2, arg3)
+      }
+    }
+    return returnValue
   }
 
   function changePage(title, body, newUrl, scrollY) {
-    document.title = title
-
     document.documentElement.replaceChild(body, document.body)
     /* We cannot just use `document.body = doc.body`, it causes Safari (tested
        5.1, 6.0 and Mobile 7.0) to execute script tags directly.
@@ -120,9 +153,29 @@ var InstantClick = function(document, location) {
     else {
       scrollTo(0, scrollY)
     }
+
+    if ($isChromeForIOS && document.title == title) {
+      /* Chrome for iOS:
+       *
+       * 1. Removes title on pushState, so the title needs to be set after.
+       *
+       * 2. Will not set the title if it’s identical when trimmed, so
+       *    appending a space won't do, but a non-breaking space works.
+       */
+      document.title = title + String.fromCharCode(160)
+    }
+    else {
+      document.title = title
+    }
+
     instantanize()
     bar.done()
     triggerPageEvent('change', false)
+
+    // Real event, useful for combining userscripts, but only for that so it’s undocumented.
+    var userscriptEvent = document.createEvent('HTMLEvents')
+    userscriptEvent.initEvent('instantclick:newpage', true, true)
+    dispatchEvent(userscriptEvent)
   }
 
   function setPreloadingAsHalted() {
@@ -130,16 +183,42 @@ var InstantClick = function(document, location) {
     $isWaitingForCompletion = false
   }
 
+  function removeNoscriptTags(html) {
+    /* Must be done on text, not on a node's innerHTML, otherwise strange
+     * things happen with implicitly closed elements (see the Noscript test).
+     */
+    return html.replace(/<noscript[\s\S]+<\/noscript>/gi, '')
+  }
+
 
   ////////// EVENT HANDLERS //////////
 
 
   function mousedown(e) {
-    preload(getLinkTarget(e.target).href)
+    if ($lastTouchTimestamp > (+new Date - 500)) {
+      return // Otherwise, click doesn’t fire
+    }
+
+    var a = getLinkTarget(e.target)
+
+    if (!a || !isPreloadable(a)) {
+      return
+    }
+
+    preload(a.href)
   }
 
   function mouseover(e) {
+    if ($lastTouchTimestamp > (+new Date - 500)) {
+      return // Otherwise, click doesn’t fire
+    }
+
     var a = getLinkTarget(e.target)
+
+    if (!a || !isPreloadable(a)) {
+      return
+    }
+
     a.addEventListener('mouseout', mouseout)
 
     if (!$delayBeforePreload) {
@@ -152,7 +231,14 @@ var InstantClick = function(document, location) {
   }
 
   function touchstart(e) {
+    $lastTouchTimestamp = +new Date
+
     var a = getLinkTarget(e.target)
+
+    if (!a || !isPreloadable(a)) {
+      return
+    }
+
     if ($preloadOnMousedown) {
       a.removeEventListener('mousedown', mousedown)
     }
@@ -163,11 +249,17 @@ var InstantClick = function(document, location) {
   }
 
   function click(e) {
+    var a = getLinkTarget(e.target)
+
+    if (!a || !isPreloadable(a)) {
+      return
+    }
+
     if (e.which > 1 || e.metaKey || e.ctrlKey) { // Opening in new tab
       return
     }
     e.preventDefault()
-    display(getLinkTarget(e.target).href)
+    display(a.href)
   }
 
   function mouseout() {
@@ -194,13 +286,23 @@ var InstantClick = function(document, location) {
     }
 
     $timing.ready = +new Date - $timing.start
-    triggerPageEvent('receive')
 
     if ($xhr.getResponseHeader('Content-Type').match(/\/(x|ht|xht)ml/)) {
       var doc = document.implementation.createHTMLDocument('')
-      doc.documentElement.innerHTML = $xhr.responseText
+      doc.documentElement.innerHTML = removeNoscriptTags($xhr.responseText)
       $title = doc.title
       $body = doc.body
+
+      var alteredOnReceive = triggerPageEvent('receive', $url, $body, $title)
+      if (alteredOnReceive) {
+        if ('body' in alteredOnReceive) {
+          $body = alteredOnReceive.body
+        }
+        if ('title' in alteredOnReceive) {
+          $title = alteredOnReceive.title
+        }
+      }
+
       var urlWithoutHash = removeHash($url)
       $history[urlWithoutHash] = {
         body: $body,
@@ -243,32 +345,15 @@ var InstantClick = function(document, location) {
 
 
   function instantanize(isInitializing) {
-    var as = document.getElementsByTagName('a'),
-        a,
-        domain = location.protocol + '//' + location.host
-
-    for (var i = as.length - 1; i >= 0; i--) {
-      a = as[i]
-      if (a.target // target="_blank" etc.
-          || a.hasAttribute('download')
-          || a.href.indexOf(domain + '/') != 0 // Another domain, or no href attribute
-          || (a.href.indexOf('#') > -1
-              && removeHash(a.href) == $currentLocationWithoutHash) // Anchor
-          || ($useWhitelist
-              ? !isWhitelisted(a)
-              : isBlacklisted(a))
-         ) {
-        continue
-      }
-      a.addEventListener('touchstart', touchstart)
-      if ($preloadOnMousedown) {
-        a.addEventListener('mousedown', mousedown)
-      }
-      else {
-        a.addEventListener('mouseover', mouseover)
-      }
-      a.addEventListener('click', click)
+    document.body.addEventListener('touchstart', touchstart, true)
+    if ($preloadOnMousedown) {
+      document.body.addEventListener('mousedown', mousedown, true)
     }
+    else {
+      document.body.addEventListener('mouseover', mouseover, true)
+    }
+    document.body.addEventListener('click', click, true)
+
     if (!isInitializing) {
       var scripts = document.body.getElementsByTagName('script'),
           script,
@@ -351,12 +436,26 @@ var InstantClick = function(document, location) {
     if (!('display' in $timing)) {
       $timing.display = +new Date - $timing.start
     }
-    if ($preloadTimer) {
-      /* Happens when there’s a delay before preloading and that delay
+    if ($preloadTimer || !$isPreloading) {
+      /* $preloadTimer:
+         Happens when there’s a delay before preloading and that delay
          hasn't expired (preloading didn't kick in).
+
+         !$isPreloading:
+         A link has been clicked, and preloading hasn’t been initiated.
+         It happens with touch devices when a user taps *near* the link,
+         Safari/Chrome will trigger mousedown, mouseover, click (and others),
+         but when that happens we ignore mousedown/mouseover (otherwise click
+         doesn’t fire). Maybe there’s a way to make the click event fire, but
+         that’s not worth it as mousedown/over happen just 1ms before click
+         in this situation.
+
+         It also happens when a user uses his keyboard to navigate (with Tab
+         and Return), and possibly in other non-mainstream ways to navigate
+         a website.
       */
 
-      if ($url && $url != url) {
+      if ($preloadTimer && $url && $url != url) {
         /* Happens when the user clicks on a link before preloading
            kicks in while another link is already preloading.
         */
@@ -364,32 +463,21 @@ var InstantClick = function(document, location) {
         location.href = url
         return
       }
+
       preload(url)
       bar.start(0, true)
       triggerPageEvent('wait')
-      $isWaitingForCompletion = true
+      $isWaitingForCompletion = true // Must be set *after* calling `preload`
       return
     }
-    if (!$isPreloading || $isWaitingForCompletion) {
-      /* If the page isn't preloaded, it likely means the user has focused
-         on a link (with his Tab key) and then pressed Return, which
-         triggered a click.
-         Because very few people do this, it isn't worth handling this case
-         and preloading on focus (also, focusing on a link doesn't mean it's
-         likely that you'll "click" on it), so we just redirect them when
-         they "click".
-         It could also mean the user hovered over a link less than 100 ms
-         after a page display, thus we didn't start the preload (see
-         comments in `preload()` for the rationale behind this.)
-
-         If the page is waiting for completion, the user clicked twice while
-         the page was preloading. Either on the same link or on another
-         link. If it's the same link something might have gone wrong (or he
-         could have double clicked), so we send him to the page the old way.
+    if ($isWaitingForCompletion) {
+      /* The user clicked on a link while a page was preloading. Either on
+         the same link or on another link. If it's the same link something
+         might have gone wrong (or he could have double clicked, we don’t
+         handle that case), so we send him to the page without pjax.
          If it's another link, it hasn't been preloaded, so we redirect the
-         user the old way.
+         user to it.
       */
-
       location.href = url
       return
     }
@@ -558,7 +646,7 @@ var InstantClick = function(document, location) {
      2.3.7: pushState appears to work correctly, but
             `doc.documentElement.innerHTML = body` is buggy.
             See details here: http://stackoverflow.com/q/21918564
-            Note an issue anymore, but it may fail where 3.0 do, this needs
+            Not an issue anymore, but it may fail where 3.0 do, this needs
             testing again.
 
      3.0:   pushState appears to work correctly (though the URL bar is only
@@ -657,34 +745,10 @@ var InstantClick = function(document, location) {
   }
 
 
-  /* The debug function isn't included by default to reduce file size.
-     To enable it, add a slash at the beginning of the comment englobing
-     the debug function, and uncomment "debug: debug," in the return
-     statement below the function. */
-
-  /*
-  function debug() {
-    return {
-      currentLocationWithoutHash: $currentLocationWithoutHash,
-      history: $history,
-      xhr: $xhr,
-      url: $url,
-      title: $title,
-      mustRedirect: $mustRedirect,
-      body: $body,
-      timing: $timing,
-      isPreloading: $isPreloading,
-      isWaitingForCompletion: $isWaitingForCompletion
-    }
-  }
-  //*/
-
-
   ////////////////////
 
 
   return {
-    // debug: debug,
     supported: supported,
     init: init,
     on: on
