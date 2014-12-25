@@ -13,7 +13,7 @@ title: Events and script re-evaluation in InstantClick
 
   <p>Its callback can take an optional <code>isInitialLoad</code> argument, it’s a Boolean that will be <code>true</code> when it’s the initial page change or when InstantClick isn’t supported, and <code>false</code> when InstantClick changes the page.
   <li><p><code>fetch</code> : A page starts preloading.
-  <li><p><code>receive</code> : A page has been preloaded.
+  <li><p><code>receive</code> : A page has been preloaded. You can <a href="#receive">modify its content</a>.
   <li><p><code>wait</code> : The user has clicked on a link, but the page isn’t preloaded yet. Only triggers when the page isn’t displayed instantly.
 </ul>
 
@@ -96,5 +96,65 @@ title: Events and script re-evaluation in InstantClick
 </div>
 </div>
 </div>
+
+<h3 id="receive">Altering content on <code>receive</code></h3>
+
+<p>Sometimes it’s simpler to alter pages on the fly than to rearchitect your back end for InstantClick. <code>receive</code> allows you to do that.
+
+<p>It gets three arguments: <code>url</code>, <code>body</code> and <code>title</code>.
+
+<p><code>url</code> is the address of the page received, it includes the hash. It’s read-only.
+
+<p><code>body</code> is the body object and <code>title</code> is the title text. You can modify those two and return an object with them (or with just one of them to modify only one) if you want to alter pages before they’re displayed.
+
+<p>Here’s an example.
+
+<div class="gist">
+<div class="gist-file">
+<div class="gist-data gist-syntax">
+<div class="file-data">
+<table cellpadding="0" cellspacing="0" class="lines highlight">
+<tr>
+<td class="line-numbers">
+<span class="line-number" rel="file-gistfile1-js-L1">1</span>
+<span class="line-number" rel="file-gistfile1-js-L2">2</span>
+<span class="line-number" rel="file-gistfile1-js-L3">3</span>
+<span class="line-number" rel="file-gistfile1-js-L4">4</span>
+<span class="line-number" rel="file-gistfile1-js-L5">5</span>
+<span class="line-number" rel="file-gistfile1-js-L6">6</span>
+<span class="line-number" rel="file-gistfile1-js-L7">7</span>
+<span class="line-number" rel="file-gistfile1-js-L8">8</span>
+<span class="line-number" rel="file-gistfile1-js-L9">9</span>
+<span class="line-number" rel="file-gistfile1-js-L10">10</span>
+<span class="line-number" rel="file-gistfile1-js-L11">11</span>
+<span class="line-number" rel="file-gistfile1-js-L12">12</span>
+</td>
+<td class="line-data">
+<pre class="line-pre"><div class="line">InstantClick.on(<span class="s1"><span class="pds">&#39;</span>receive<span class="pds">&#39;</span></span>, <span class="st">function</span>(<span class="vpf">url</span>, <span class="vpf">body</span>, <span class="vpf">title</span>) {
+</div><div class="line">  <span class="s">var</span> dont_display <span class="k">=</span> body.querySelector(<span class="s1"><span class="pds">&#39;</span>#dont_display_me_when_loaded_with_instantclick<span class="pds">&#39;</span></span>)
+</div><div class="line">  <span class="k">if</span> (dont_display) {
+</div><div class="line">    dont_display.<span class="s3">setAttribute</span>(<span class="s1"><span class="pds">&#39;</span>hidden<span class="pds">&#39;</span></span>, <span class="s1"><span class="pds">&#39;</span><span class="pds">&#39;</span></span>);
+</div><div class="line">  }
+</div><div class="line">  title <span class="k">+=</span> <span class="s1"><span class="pds">&#39;</span> (loaded with InstantClick)<span class="pds">&#39;</span></span>;
+</div><div class="line">  
+</div><div class="line">  <span class="k">return</span> {
+</div><div class="line">    body<span class="k">:</span> body,
+</div><div class="line">    title<span class="k">:</span> title
+</div><div class="line">  };
+</div><div class="line">});
+</div></pre>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<p>Keep in mind the body object here is <code>body</code> and not <code>document.body</code>!
+
+<p>When you have more than one callback listening to <code>receive</code>, each subsequent callback will get the last altered content.
+
+<p>If you don’t want to alter the page on <code>receive</code>, either don’t return anything or return <code>false</code>.
 
 <? include('includes/documentation_navigation.php') ?>

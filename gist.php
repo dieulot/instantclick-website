@@ -11,4 +11,5 @@ $str = str_replace('\\', '', $str);
 $str = preg_replace('#<div class="gist-meta".+</div>#s', "</div>\n</div>", $str);
 $str = preg_replace('/\\n+/', "\n", $str);
 $str = preg_replace('/ id="[^"]+"/', '', $str);
+$str = str_replace('<span class="pl-', '<span class="', $str); // doesn’t work that well, they changed classes’ names
 echo $str;
