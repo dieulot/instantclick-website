@@ -59,7 +59,7 @@ title: Blacklisting in InstantClick
 <p>If you’ve blacklisted a parent element and would like to whitelist a link (or all the links in a sub-parent), add a <code>data-instant</code> attribute to that link or sub-parent.
 
 <!-- The following paragraph is needed because the last one is a bit hard to grasp. -->
-<p>What’s happening behind the scene is InstantClick go through all the parent elements, from the current link to <code>&lt;html&gt;</code>, if it finds a <code>data-no-instant</code> attribute it considers the link blacklisted and stop looping through the parents. If it finds a <code>data-instant</code> it considers the link whitelisted.
+<p>What’s happening behind the scenes is InstantClick goes through all the parent elements, from the current link to <code>&lt;html&gt;</code>, if it finds a <code>data-no-instant</code> attribute it considers the link blacklisted and stops looping through the parents. If it finds a <code>data-instant</code> it considers the link whitelisted.
 <!-- OMG it’s really poorly explained -->
 
 <p>If you’d like to blacklist all links by default, and then whitelist links one by one, or whitelist only links in a container, add a <code>data-no-instant</code> attribute to the <code>&lt;body&gt;</code> and a <code>data-instant</code> attribute to the container/links.
@@ -67,7 +67,7 @@ title: Blacklisting in InstantClick
 
 <h2>Whitelist mode</h2>
 
-<p class="warning">The following is deprecated and will likely be removed in 4.0. It’s only useful to know if you’re dealing with a website that have it activated (the <code>true</code> argument is passed to <code>InstantClick.init</code>).
+<p class="warning">The following is deprecated and will likely be removed in 4.0. It’s only useful to know if you’re dealing with a website that has it activated (the <code>true</code> argument is passed to <code>InstantClick.init</code>).
 
 <p class="warning">The Correct Way™: If you want to accomplish the same as the whitelist mode, just add <code>data-no-instant</code> to your <code>&lt;body&gt;</code>, as described in “Whitelist a link or group of links”.
 
