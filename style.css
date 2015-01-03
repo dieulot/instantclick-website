@@ -329,6 +329,10 @@ sup a {
 	margin-top: 1.5em;
 }
 
+.prev-next a {
+	text-decoration: none;
+}
+
 .prev-next .next {
 	float: right;
 }
@@ -337,6 +341,7 @@ sup a {
 	color: black;
 	text-decoration: none;
 	display: inline-block;
+	color: inherit;
 }
 
 .prev-next .next:after {
