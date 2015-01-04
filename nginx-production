@@ -9,7 +9,7 @@ server {
 	}
 
 	location ~ \.(js|png|jpg|ico)$ {
-		expires 1d;
+		expires 1w;
 	}
 
 	try_files $uri $uri/ $uri.html =404;
