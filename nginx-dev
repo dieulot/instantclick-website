@@ -25,9 +25,15 @@ server {
 	server_name output.instantclick.dev;
 	root /home/alex/instantclick/instantclick.io/output;
 
-  location ~ ^/(whitelist|start)\.html$ {
-    return 302 /download;
-  }
+	expires 1s;
+
+	location ~ ^/(whitelist|start)\.html$ {
+		return 302 /download;
+	}
+
+	location ~ \.(js|png|jpg|ico)$ {
+		expires 24s;
+	}
 
 	try_files $uri $uri/ $uri.html =404;
 

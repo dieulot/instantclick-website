@@ -4,16 +4,20 @@ server {
 
 	expires 1m;
 
-  location ~ ^/(whitelist|start)\.html$ {
-    return 302 /download;
-  }
+	location ~ ^/(whitelist|start)\.html$ {
+		return 302 /download;
+	}
 
-  try_files $uri $uri/ $uri.html =404;
+	location ~ \.(js|png|jpg|ico)$ {
+		expires 1d;
+	}
 
-  error_page 404 /404.html;
+	try_files $uri $uri/ $uri.html =404;
+
+	error_page 404 /404.html;
 }
 
 server {
-  server_name www.instantclick.io;
-  return 301 $scheme://instantclick.io$request_uri;
+	server_name www.instantclick.io;
+	return 301 $scheme://instantclick.io$request_uri;
 }
