@@ -35,7 +35,7 @@ git push production master
 
 ## Contributing
 
-To keep a consistent tone I’ll end up editing most contributions. This means that for anything related to the copy you should open an issue, and not a pull request. You’ll then be credited in the commit message.
+To keep a consistent tone I’ll end up editing most contributions. This means that for anything related to the copy (except for minor things, such as typos) you should open an issue first instead of a pull request. You’ll then be credited in the commit message.
 
 I’m not a native English speaker, so if anything sounds weird, please tell me!
 
