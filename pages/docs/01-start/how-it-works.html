@@ -15,7 +15,7 @@ title: How InstantClick works
 <ul>
   <li>You can’t rely on <code>DOMContentLoaded</code> or <code>jQuery.ready()</code> to trigger your code (use <a href="/scripts">InstantClick’s events</a> instead).
   <li>Third-party scripts that rely on them might need tweaking (see <a href="/scripts">Events and script re-evaluation</a>).
-  <li>The browser doesn’t show its loading indicator on page changes, <a href="/progress-bar">InstantClick shows his</a>.
+  <li>The browser doesn’t show its loading indicator on page changes, <a href="/progress-bar">InstantClick shows its own</a>.
 </ul>
 
 <p>The second most important thing to understand is that InstantClick only changes the <code>&lt;body&gt;</code> and <code>&lt;title&gt;</code>, so that your scripts are evaluated only once (this brings a nice, noticeable speed boost in and of itself).
