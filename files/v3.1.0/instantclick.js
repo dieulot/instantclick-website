@@ -292,6 +292,7 @@ var InstantClick = function(document, location) {
       doc.documentElement.innerHTML = removeNoscriptTags($xhr.responseText)
       $title = doc.title
       $body = doc.body
+      $url = $xhr.responseURL
 
       var alteredOnReceive = triggerPageEvent('receive', $url, $body, $title)
       if (alteredOnReceive) {
