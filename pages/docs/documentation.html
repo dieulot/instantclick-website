@@ -10,18 +10,18 @@ a {
 
 <h1>Documentation</h1>
 
-<? require('includes/documentation_order.php') ?>
+<?php require('includes/documentation_order.php') ?>
 
-<? foreach ($documentation_order as $title => $chapters): ?>
+<?php foreach ($documentation_order as $title => $chapters): ?>
   <h2><?= $title ?></h2>
 
   <ul>
-<? foreach ($chapters as $chapter): ?>
+<?php foreach ($chapters as $chapter): ?>
     <li>
       <a href="/<?= $chapter ?>"><?= get_page_h1($chapter) ?></a>
-<? if ($chapter == 'download'): ?>
+<?php if ($chapter == 'download'): ?>
       ← Start here
-<? endif ?>
-<? endforeach ?>
+<?php endif ?>
+<?php endforeach ?>
   </ul>
-<? endforeach ?>
+<?php endforeach ?>

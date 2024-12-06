@@ -1,4 +1,4 @@
-<?
+<?php
 require('documentation_order.php');
 
 /* Find previous and next chapter */
@@ -28,31 +28,31 @@ for ($i = 0; $i < count($documentation_chapters); $i++) {
 }
 ?>
 <p class="prev-next">
-<? if ($next): ?>
+<?php if ($next): ?>
   <a class="next" href="/<?= $next ?>"><?= get_page_h1($next) ?></a>
-<? endif ?>
-<? if ($prev): ?>
+<?php endif ?>
+<?php if ($prev): ?>
   <a class="prev" href="/<?= $prev ?>"><?= get_page_h1($prev) ?></a>
-<? else: ?>
+<?php else: ?>
   <a class="prev" href="/documentation">Documentation</a>
-<? endif ?>
+<?php endif ?>
 
 <div class="toc">
   <h3>Documentation table of contents</h3>
 
-<? foreach ($documentation_order as $title => $chapters): ?>
+<?php foreach ($documentation_order as $title => $chapters): ?>
   <h4><?= $title ?></h4>
   <div class="chapters">
-<? $i = 0;
+<?php $i = 0;
 foreach ($chapters as $chapter): ?>
     <li>
       <?= ++$i ?>.
-<? if ($chapter == $page): ?>
+<?php if ($chapter == $page): ?>
       <?= get_page_h1($chapter) ?>
-<? else: ?>
+<?php else: ?>
       <a href="/<?= $chapter ?>"><?= get_page_h1($chapter) ?></a>
-<? endif ?>
-<? endforeach ?>
+<?php endif ?>
+<?php endforeach ?>
   </div>
-<? endforeach ?>
+<?php endforeach ?>
 </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 $documentation_order = [
 // Syntax:
 // 'Section name' => [

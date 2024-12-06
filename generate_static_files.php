@@ -1,4 +1,4 @@
-<?
+<?php
 function generate($dir) {
   $handle = opendir($dir);
   while ($file = readdir($handle)) {

@@ -1,4 +1,4 @@
-<?
+<?php
 /* This minifies CSS surprisingly well. */
 $style = file_get_contents('style.css');
 $style = preg_replace('#\s*/\*(.+)\*/\s*#', '', $style);
@@ -106,17 +106,17 @@ extract(parse_page($page_path));
 ?>
 <!doctype html>
 <meta charset="utf-8">
-<? if (isset($page_title)): ?>
+<?php if (isset($page_title)): ?>
 <title><?= $page_title ?></title>
-<? endif ?>
+<?php endif ?>
 <meta name="viewport" content="width=768">
 <style><?= $style ?></style>
-<? if (isset($page_description)): ?>
+<?php if (isset($page_description)): ?>
 <meta name="description" content="<?= $page_description ?>">
-<? endif ?>
-<? if ($page != '404'): ?>
-<link rel="canonical" href="http://instantclick.io/<? if ($page != 'index') { echo $page; } ?>">
-<? endif ?>
+<?php endif ?>
+<?php if ($page != '404'): ?>
+<link rel="canonical" href="http://instantclick.io/<?php if ($page != 'index') { echo $page; } ?>">
+<?php endif ?>
 
 <header id="header">
   <div class="logo"><a href="/">InstantClick</a></div>
@@ -126,7 +126,7 @@ extract(parse_page($page_path));
   </ul>
 </header>
 <article class="container">
-<? eval('?>' . $page_content) ?>
+<?php eval('?>' . $page_content) ?>
 </article>
 <div id="footer">
   <p>InstantClick is released under the <a href="/license">MIT License</a> © 2014–<?= date('Y') ?> Alexandre Dieulot
